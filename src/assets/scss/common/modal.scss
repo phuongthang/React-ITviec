@@ -1,0 +1,24 @@
+.modal-fail,.modal-success,
+.modal-confirm-profile,
+.modal-delete,
+.modal-confirm-update-cv,
+.modal-confirm-create-cv{
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    .modal-content{
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        width: 350px;
+        height: 250px;
+        .box-modal-action{
+            color: #fff;
+            .btn {
+                width:120px;
+                margin: 20px;
+              }
+        }
+    }
+}
