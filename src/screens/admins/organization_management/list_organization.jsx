@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import managementApi from '../../../api/admin/managementApi';
 import Constants from '../../../constants/constants';
 import ReactPaginate from 'react-paginate';
+import ModalConfirmDeleteOrganization from './modal_confirm_delete_organization';
 
 function ListOrganization(props) {
     const [organization, setOrganization] = useState({});
     const [renderTable, setRenderTable] = useState();
-    
+    const [organizationId, setOrgaizationId] = useState();
     const [limit, setLimit] = useState(1);
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(1);
@@ -37,15 +38,21 @@ function ListOrganization(props) {
         const limit = +e.target.value;
         setLimit(limit);
     }
+    const [modalConfirmDeleteOrganization, setModalConfirmDeleteOrganization] = useState(false);
+    const toggleModalConfirmDeleteOrganization = (e) => {
+        const organizationId = e.target.dataset.id;
+        setOrgaizationId(organizationId);
+        setModalConfirmDeleteOrganization(!modalConfirmDeleteOrganization);
+    };
     useEffect(() => {
         if (organization.length > 0) {
             setRenderTable(organization.map(item => (
                 <tr key={item.id}>
                     <td>{item.id}</td>
                     <td>{item.fullname}</td>
-                    <td><img src="../assets/images/users/1.jpg" alt="organization" className="thumb-md round-img"/></td>
+                    <td><img src={"http://localhost:8888/backend-web/public" +(item.image ? item.image : '/local/default.png')} alt="organization" className="thumb-md round-img"/></td>
                     <td>{item.field}</td>
-                    <td><i className="fa fa-info m-r-5 text-info cell-click font-20"></i> <i className="fa fa-minus-circle m-l-5 text-danger cell-click font-20"></i></td>
+                    <td><i className="fa fa-info m-r-5 text-info cell-click font-20" data-id={item.id}></i> <i className="fa fa-minus-circle m-l-5 text-danger cell-click font-20" data-id={item.id} onClick={toggleModalConfirmDeleteOrganization}></i></td>
                 </tr>
             )));
         }
@@ -92,6 +99,10 @@ function ListOrganization(props) {
                 activeClassName={"active"} />
                 </div> }
             </div>
+            <ModalConfirmDeleteOrganization
+            modal={modalConfirmDeleteOrganization}
+            toggle={toggleModalConfirmDeleteOrganization}
+            id={organizationId}/>
         </>
     );
 }

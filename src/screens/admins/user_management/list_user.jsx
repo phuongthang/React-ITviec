@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 import managementApi from '../../../api/admin/managementApi';
 import Constants from '../../../constants/constants';
+import ModalConfirmDeleteUser from './modal_confirm_delete_user';
 
 function ListUser(props) {
     const [user, setUser] = useState({});
@@ -10,6 +11,7 @@ function ListUser(props) {
     const [limit, setLimit] = useState(1);
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(1);
+    const [userId, setUserId] = useState();
 
 
     const listUser = () => {
@@ -39,15 +41,22 @@ function ListUser(props) {
         setLimit(limit);
     }
 
+    const [modalConfirmDeleteUser, setModalConfirmDeleteUser] = useState(false);
+    const toggleModalConfirmDeleteUser = (e) => {
+        const userId = e.target.dataset.id;
+        setUserId(userId);
+        setModalConfirmDeleteUser(!modalConfirmDeleteUser);
+    };
+
     useEffect(() => {
         if (user.length > 0) {
             setRenderTable(user.map(item => (
                 <tr key={item.id}>
                     <td>{user.indexOf(item)}</td>
                     <td>{item.fullname}</td>
-                    <td><img src="../assets/images/users/1.jpg" alt="organization" className="thumb-md round-img"/></td>
+                    <td><img src={"http://localhost:8888/backend-web/public" + (item.image ? item.image: '/local/default.png')} alt="organization" className="thumb-md round-img"/></td>
                     <td>{item.position}</td>
-                    <td><i className="fa fa-info m-r-5 text-info cell-click font-20"></i> <i className="fa fa-minus-circle m-l-5 text-danger cell-click font-20"></i></td>
+                    <td><i className="fa fa-info m-r-5 text-info cell-click font-20" data-id={item.id}></i> <i className="fa fa-minus-circle m-l-5 text-danger cell-click font-20" data-id={item.id} onClick={toggleModalConfirmDeleteUser}></i></td>
                 </tr>
             )));
         }
@@ -94,6 +103,10 @@ function ListUser(props) {
                 activeClassName={"active"} />
                 </div> }
             </div>
+            <ModalConfirmDeleteUser
+            modal={modalConfirmDeleteUser}
+            toggle={toggleModalConfirmDeleteUser}
+            id={userId}/>
         </>
     );
 }

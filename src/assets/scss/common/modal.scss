@@ -2,7 +2,8 @@
 .modal-confirm-profile,
 .modal-delete,
 .modal-confirm-update-cv,
-.modal-confirm-create-cv{
+.modal-confirm-create-cv,
+.modal-confirm{
     height: 100%;
     margin: 0 auto;
     display: flex;
@@ -11,11 +12,11 @@
         margin: auto;
         display: flex;
         justify-content: center;
-        width: 350px;
-        height: 250px;
+        width: 400px;
+        height: 300px;
         .box-modal-action{
-            color: #fff;
             .btn {
+                color: #fff;
                 width:120px;
                 margin: 20px;
               }
