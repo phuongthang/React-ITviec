@@ -52,7 +52,7 @@ function ListUser(props) {
         if (user.length > 0) {
             setRenderTable(user.map(item => (
                 <tr key={item.id}>
-                    <td>{user.indexOf(item)}</td>
+                    <td>{user.indexOf(item)+1}</td>
                     <td>{item.fullname}</td>
                     <td><img src={"http://localhost:8888/backend-web/public" + (item.image ? item.image: '/local/default.png')} alt="organization" className="thumb-md round-img"/></td>
                     <td>{item.position}</td>

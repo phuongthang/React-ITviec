@@ -38,7 +38,7 @@ function ListJob(props) {
                     <div className="card card-body">
                         <div className="row">
                             <div className="col-md-4 col-lg-3 text-center" >
-                                <a href="#"><img src="http://localhost:8888/backend-web/public/local/default.png" alt="" className="img-circle img-responsive mb-3" /></a>
+                                <a href="#"><img src={"http://localhost:8888/backend-web/public/" + (item.image?item.image:'/local/default.png')} alt="" className="img-circle img-responsive mb-3" /></a>
                                     {
                                         item.status === 3 && <label htmlFor="jobStatus" className="btn btn-sm btn-warning btn-status"><i className="fa fa-clock-o"></i> Hết hạn</label>
                                     }

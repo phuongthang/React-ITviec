@@ -6,6 +6,7 @@ const Constants = {
         PROFILE:'/profile',
         USER_MANAGEMENT:'/user-management',
         ORGANIZATION_MANAGEMENT:'/organization-management',
+        JOB_MANAGEMENT:'/job-management',
         CREATE_CV:'/create-cv',
         CREATE_JOB:'/create-job',
         EDIT_CV:'/edit-cv',

@@ -48,7 +48,7 @@ function ListOrganization(props) {
         if (organization.length > 0) {
             setRenderTable(organization.map(item => (
                 <tr key={item.id}>
-                    <td>{item.id}</td>
+                    <td>{organization.indexOf(item) + 1}</td>
                     <td>{item.fullname}</td>
                     <td><img src={"http://localhost:8888/backend-web/public" +(item.image ? item.image : '/local/default.png')} alt="organization" className="thumb-md round-img"/></td>
                     <td>{item.field}</td>

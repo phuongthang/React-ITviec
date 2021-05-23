@@ -39,6 +39,7 @@
 }
 .btn-status{
     width: 100px;
+    color: #fff !important;
 }
 .background-cv{
     background: -webkit-linear-gradient(180deg, #09203F 0%, #537895 100%);
