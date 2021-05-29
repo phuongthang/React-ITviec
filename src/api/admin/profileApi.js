@@ -1,11 +1,11 @@
 import axiosClient from './../axiosClient';
 const profileApi = {
     getProfile(params) {
-      const url = `/admin/profile/${params.id}`;
-      return axiosClient.get(url,params);
+      const url = `/admin/profile/show`;
+      return axiosClient.post(url,params);
     },
     postProfile(params) {
-      const url = `/admin/profile`;
+      const url = `/admin/profile/update`;
       return axiosClient.post(url,params);
     },
 };

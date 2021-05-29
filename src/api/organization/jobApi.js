@@ -18,6 +18,10 @@ const jobApi = {
       const url = `/organization/job/update`;
       return axiosClient.post(url,params);
     },
+    detailJob(params) {
+      const url = `/organization/job/detail`;
+      return axiosClient.post(url,params);
+    },
 };
   
 export default jobApi;

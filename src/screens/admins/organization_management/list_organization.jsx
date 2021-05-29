@@ -3,6 +3,7 @@ import managementApi from '../../../api/admin/managementApi';
 import Constants from '../../../constants/constants';
 import ReactPaginate from 'react-paginate';
 import ModalConfirmDeleteOrganization from './modal_confirm_delete_organization';
+import { Link } from "react-router-dom";
 
 function ListOrganization(props) {
     const [organization, setOrganization] = useState({});
@@ -52,7 +53,7 @@ function ListOrganization(props) {
                     <td>{item.fullname}</td>
                     <td><img src={"http://localhost:8888/backend-web/public" +(item.image ? item.image : '/local/default.png')} alt="organization" className="thumb-md round-img"/></td>
                     <td>{item.field}</td>
-                    <td><i className="fa fa-info m-r-5 text-info cell-click font-20" data-id={item.id}></i> <i className="fa fa-minus-circle m-l-5 text-danger cell-click font-20" data-id={item.id} onClick={toggleModalConfirmDeleteOrganization}></i></td>
+                    <td><Link to={`${Constants.LINK_URL.ORGANIZATION_INFO}?id=${item.id}`}><i className="fa fa-info m-r-5 text-info cell-click font-20"></i></Link> <i className="fa fa-minus-circle m-l-5 text-danger cell-click font-20" data-id={item.id} onClick={toggleModalConfirmDeleteOrganization}></i></td>
                 </tr>
             )));
         }

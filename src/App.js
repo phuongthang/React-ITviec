@@ -12,6 +12,9 @@ import CreateCV from './screens/users/create/create_cv/create_cv';
 import CreateJob from './screens/users/create/create_job/create_job';
 import EditJob from './screens/users/edit/edit_job/edit_job';
 import BackgroundListJob from './screens/users/index/list_job/background_list_job';
+import JobInformation from './screens/users/information/job_information/job_information';
+import OrganizationInformation from './screens/users/information/organization_information/organization_information';
+import UserInformation from './screens/users/information/user_information/user_information';
 import Profile from './screens/users/profile/profile';
 
 function App() {
@@ -32,6 +35,9 @@ function App() {
         <Route exact path={Constants.LINK_URL.ORGANIZATION_MANAGEMENT} component={OrganizationManagement}/>
         <Route exact path={Constants.LINK_URL.USER_MANAGEMENT} component={UserManagement}/>
         <Route exact path={Constants.LINK_URL.JOB_MANAGEMENT} component={JobManagement}/>
+        <Route exact path={Constants.LINK_URL.USER_INFO} component={UserInformation}/>
+        <Route exact path={Constants.LINK_URL.ORGANIZATION_INFO} component={OrganizationInformation}/>
+        <Route exact path={Constants.LINK_URL.JOB_INFORMATION} component={JobInformation}/>
       </Switch>
     </BrowserRouter>
   );

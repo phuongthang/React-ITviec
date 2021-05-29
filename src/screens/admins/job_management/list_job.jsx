@@ -5,6 +5,7 @@ import ReactPaginate from 'react-paginate';
 import ModalConfirmDeleteJob from './modal_confirm_delete_job';
 import { Button } from 'reactstrap';
 import ModalConfirmActiveJob from './modal_confirm_active_job';
+import ModalConfirmActiveStatusJob from './modal_confirm_status_job';
 
 function ListJob(props) {
     const [job, setJob] = useState({});
@@ -15,6 +16,7 @@ function ListJob(props) {
     const [page, setPage] = useState(1);
     const [text, setText] = useState();
     const [flagActive, setFlagActive] = useState(null);
+    const [flagStatus, setFlagStatus] = useState(null);
 
     const listJob = () => {
         managementApi.getJob().then((response) => {
@@ -63,6 +65,21 @@ function ListJob(props) {
         setJobId(+jobId);
         setModalConfirmActiveJob(!modalConfirmActiveJob);
     };
+    const [modalConfirmActiveStatusJob, setModalConfirmActiveStatusJob] = useState(false);
+    const toggleModalConfirmActiveStatusJob = (e) => {
+        const jobId = e.target.dataset.id;
+        const status = e.target.dataset.status;
+        if(status === '0'){
+            setText("Bạn có chắc muốn kích hoạt bài viết này");
+            setFlagStatus(1);
+        }
+        else{
+            setText("Bạn có chắc muốn hủy kích hoạt bài viết này");
+            setFlagStatus(0);
+        }
+        setJobId(+jobId);
+        setModalConfirmActiveStatusJob(!modalConfirmActiveStatusJob);
+    };
     useEffect(() => {
         if (job.length > 0) {
             setRenderTable(job.map(item => (
@@ -73,10 +90,10 @@ function ListJob(props) {
                     <td>{item.location}</td>
                     <td>
                     {
-                        item.status === 2 && <label htmlFor="jobStatus" className="btn btn-sm btn-success btn-status"><i className="fa fa-check-circle"></i> Hoạt động</label>
+                        item.status === 1 && <label htmlFor="jobStatus" className="btn btn-sm btn-success btn-status"><i className="fa fa-check-circle"></i> Hoạt động</label>
                     }
                     {
-                        item.status === 1 && <label htmlFor="jobStatus" className="btn btn-sm btn-danger btn-status"><i className="fa fa-ban"></i> Chờ</label>
+                        item.status === 0 && <label htmlFor="jobStatus" className="btn btn-sm btn-danger btn-status"><i className="fa fa-ban"></i> Chờ</label>
                     }
                     </td>
                     <td>
@@ -84,10 +101,10 @@ function ListJob(props) {
                         item.active === 1 && <Button className="btn btn-sm btn-success btn-status" data-id={item.id} data-active={item.active} onClick={toggleModalConfirmActiveJob} ><i className="fa fa-check-circle"></i> Có</Button>
                     }
                     {
-                        item.active === 0 && <Button className="btn btn-sm btn-danger btn-status" data-id={item.id} data-active={item.active} onClick={toggleModalConfirmActiveJob} disabled={item.status===1?true:false}><i className="fa fa-ban"></i> Không</Button>
+                        item.active === 0 && <Button className="btn btn-sm btn-danger btn-status" data-id={item.id} data-active={item.active} onClick={toggleModalConfirmActiveJob} disabled={item.status===0?true:false}><i className="fa fa-ban"></i> Không</Button>
                     }
                     </td>
-                    <td><i className="fa fa-paperclip m-r-5 text-info cell-click font-20" data-id={item.id}></i></td>
+                    <td><i className="fa fa-paperclip m-r-5 text-info cell-click font-20" data-id={item.id} data-status={item.status} onClick={toggleModalConfirmActiveStatusJob}></i></td>
                     <td><i className="fa fa-info m-r-5 text-info cell-click font-20" data-id={item.id}></i> <i className="fa fa-minus-circle m-l-5 text-danger cell-click font-20" data-id={item.id} onClick={toggleModalConfirmDeleteJob}></i></td>
                 </tr>
             )));
@@ -148,6 +165,12 @@ function ListJob(props) {
             id={jobId}
             text={text}
             flag={flagActive}/>
+            <ModalConfirmActiveStatusJob
+            modal={modalConfirmActiveStatusJob}
+            toggle={toggleModalConfirmActiveStatusJob}
+            id={jobId}
+            text={text}
+            flag={flagStatus}/>
         </>
     );
 }

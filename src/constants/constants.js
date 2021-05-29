@@ -14,6 +14,9 @@ const Constants = {
         DASHBOARD:'/dashboard',
         CHANGE_PASSWORD:'/change-password',
         LIST_JOB:'/list-job',
+        USER_INFO:'/user-info',
+        ORGANIZATION_INFO:'/organization-info',
+        JOB_INFORMATION:'/job-info',
     },
     HTTP_STATUS:{
         OK: 200,

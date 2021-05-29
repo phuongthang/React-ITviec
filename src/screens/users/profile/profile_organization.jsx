@@ -33,7 +33,6 @@ function ProfileOrganization(props) {
         setFlag(1);
     }
     useEffect(() => {
-        if (id) {
             profileApi.getProfile({
                 id:id,
             }).then((response) => {
@@ -42,7 +41,7 @@ function ProfileOrganization(props) {
                     console.log(response.data);
                     if (response.status === Constants.HTTP_STATUS.OK) {
                         setOrganization(response.data.organization);
-                        setAvatar(response.data.organization.image);
+                        setAvatar(response.data.organization.image?response.data.organization.image:'/local/default.png');
                     }
                 }
                 return () => mounted = false;
@@ -56,7 +55,6 @@ function ProfileOrganization(props) {
                 }
                 return () => mounted = false;
             });
-        }
     }, []);
     const [modalConfirmProfile, setModalConfirmProfile] = useState(false);
     const toggleModalConfirmProfile = () => {

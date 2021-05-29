@@ -32,7 +32,6 @@ function ProfileAdmin(props) {
         setFlag(1);
     }
     useEffect(() => {
-        if (id) {
             profileApi.getProfile({
                 id: id,
             }).then((response) => {
@@ -40,7 +39,7 @@ function ProfileAdmin(props) {
                 if (mounted) {
                     if (response.status === Constants.HTTP_STATUS.OK) {
                         setAdmin(response.data.admin);
-                        setAvatar(response.data.admin.image);
+                        setAvatar(response.data.admin.image?response.data.admin.image:'/local/default.png');
                     }
                 }
                 return () => mounted = false;
@@ -54,7 +53,6 @@ function ProfileAdmin(props) {
                 }
                 return () => mounted = false;
             });
-        }
     }, []);
 
     const [modalConfirmProfile, setModalConfirmProfile] = useState(false);
@@ -68,18 +66,18 @@ function ProfileAdmin(props) {
                     <div className="card-body">
                         <center className="m-t-30">
                             <img className="img-circle" src={"http://localhost:8888/backend-web/public"+ avatar} width={150} />
-                            <h4 className="card-title m-t-10"><label>{admin.fullname}</label></h4>
-                            <h6 className="card-subtitle"><label>{admin.position}</label></h6>
+                            <h4 className="card-title m-t-10"><label>{admin.fullname?admin.fullname:''}</label></h4>
+                            <h6 className="card-subtitle"><label>{admin.position?admin.position:''}</label></h6>
                         </center>
                     </div>
                     <hr />
                     <div className="card-body">
                         <small className="text-muted">Email:</small>
-                        <h6><label>{admin.email}</label></h6>
+                        <h6><label>{admin.email?admin.email:''}</label></h6>
                         <small className="text-muted p-t-30 db">Số điện thoại:</small>
-                        <h6><label>{admin.phone}</label></h6>
+                        <h6><label>{admin.phone?admin.phone:''}</label></h6>
                         <small className="text-muted p-t-30 db">Địa chỉ:</small>
-                        <h6><label>{admin.address}</label></h6>
+                        <h6><label>{admin.address?admin.address:''}</label></h6>
                         <br />
                         <div className="map-box">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470029.1604841957!2d72.29955005258641!3d23.019996818380896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C+Gujarat!5e0!3m2!1sen!2sin!4v1493204785508" width="100%" height={150} frameBorder={0} style={{ "border": "0" }} allowFullScreen />
@@ -101,7 +99,7 @@ function ProfileAdmin(props) {
                         <div className="tab-pane active" id="profile" role="tabpanel">
                             <div className="card-body">
                                 <p className="btn btn-danger">Mô tả :</p>
-                                <p className="m-t-30"><label>{admin.description}</label></p>
+                                <p className="m-t-30"><label>{admin.description?admin.description:''}</label></p>
                             </div>
                         </div>
                         <div className="tab-pane" id="edit" role="tabpanel">
@@ -110,31 +108,31 @@ function ProfileAdmin(props) {
                                     <div className="form-group">
                                         <label className="col-md-12">Họ và tên :</label>
                                         <div className="col-md-12">
-                                            <input className="form-control form-control-line" defaultValue={admin.fullname} onChange={handleChange} name="fullname" />
+                                            <input className="form-control form-control-line" defaultValue={admin.fullname?admin.fullname:''} onChange={handleChange} name="fullname" />
                                         </div>
                                     </div>
                                     <div className="form-group">
                                         <label className="col-md-12">Vị trí :</label>
                                         <div className="col-md-12">
-                                            <input className="form-control form-control-line" defaultValue={admin.position} onChange={handleChange} name="position" />
+                                            <input className="form-control form-control-line" defaultValue={admin.position?admin.position:''} onChange={handleChange} name="position" />
                                         </div>
                                     </div>
                                     <div className="form-group">
                                         <label className="col-md-12">Địa chỉ :</label>
                                         <div className="col-md-12">
-                                            <input className="form-control form-control-line" defaultValue={admin.address} onChange={handleChange} name="address" />
+                                            <input className="form-control form-control-line" defaultValue={admin.address?admin.address:''} onChange={handleChange} name="address" />
                                         </div>
                                     </div>
                                     <div className="form-group">
                                         <label className="col-md-12">Số điện thoại :</label>
                                         <div className="col-md-12">
-                                            <input className="form-control form-control-line" defaultValue={admin.phone} onChange={handleChange} name="phone" />
+                                            <input className="form-control form-control-line" defaultValue={admin.phone?admin.phone:''} onChange={handleChange} name="phone" />
                                         </div>
                                     </div>
                                     <div className="form-group">
                                         <label className="col-md-12">Mô tả :</label>
                                         <div className="col-md-12">
-                                            <textarea rows={5} textmode="MultiLine" className="form-control form-control-line" defaultValue={admin.description} onChange={handleChange} name="description" />
+                                            <textarea rows={5} textmode="MultiLine" className="form-control form-control-line" defaultValue={admin.description?admin.description:''} onChange={handleChange} name="description" />
                                         </div>
                                     </div>
                                     <div className="form-group">
