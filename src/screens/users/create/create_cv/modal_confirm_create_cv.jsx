@@ -65,7 +65,7 @@ function ModalConfirmCreateCV(props) {
 
                 <div className="text-center box-modal-action">
                     <button type="button" onClick={onSubmit} className="btn btn-info">Đồng ý</button>
-                    <button type="button" className="btn btn-secondary" onClick={props.toggle}>Hủy</button>
+                    <button type="button" className="btn btn-danger" onClick={props.toggle}>Hủy</button>
                 </div>
                 <ModalSuccess toggle={toggleModalSuccess} modal={modalSuccess} text="Tạo CV thành công !" />
                 <ModalFail toggle={toggleModalFail} modal={modalFail} />

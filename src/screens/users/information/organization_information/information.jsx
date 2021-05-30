@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import jobApi from "../../../../api/organization/jobApi";
 import profileApi from "../../../../api/organization/profileApi";
 import Constants from "../../../../constants/constants";
-import { convertDate, queryString } from "../../../../helpers/helpers";
+import { calcTime, convertDate, convertExperience, convertType, queryString } from "../../../../helpers/helpers";
 import { Link } from 'react-router-dom';
 import ReviewOrganization from "../../review/review_organization";
 
@@ -64,7 +64,7 @@ function Information(props) {
     useEffect(() => {
         if (listJob) {
             setRenderListJob(listJob.map(item => (
-                <Link to={Constants.LINK_URL.JOB_INFORMATION + `?organization_id=${parameters.id}&job_id=${item.id}`} className="col-md-12 col-lg-12 col-xlg-12" key={item.id}>
+                <Link to={Constants.LINK_URL.JOB_INFO + `?organization_id=${parameters.id}&job_id=${item.id}`} className="col-md-12 col-lg-12 col-xlg-12" key={item.id}>
                     <div className="card job-item">
                         <div className="card-body mb-30 d-flex justify-content-between">
                             <div className="d-flex">
@@ -73,16 +73,16 @@ function Information(props) {
                                 </div>
                                 <div className="m-l-20">
                                     <h4>{item.title}</h4>
-                                    <div className="d-flex">
-                                        <p className="m-r-20 m-l-20">{item.experience_id}</p>
-                                        <p className="m-r-20 m-l-20"><i className="fa fa-map-marker text-danger m-r-15"></i>{item.location}</p>
-                                        <p className="m-r-20 m-l-20"><i className="fa fa-bitcoin text-success m-r-10"></i>{item.salary}</p>
+                                    <div className="d-flex text-secondary mt-4">
+                                        <p className="m-r-20 m-l-20"><i className="fa fa-grav text-info m-r-10"></i>Trình độ : {convertExperience(item.experience_id)}</p>
+                                        <p className="m-r-20 m-l-20"><i className="fa fa-map-marker text-danger m-r-10"></i>Vị trí : {item.location}</p>
+                                        <p className="m-r-20 m-l-20"><i className="fa fa-bitcoin text-success m-r-10"></i>Lương: {item.salary}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div className="text-center">
-                                <div className="btn btn-danger">{item.type_id}</div>
-                                <div>{item.created_at} giờ trước</div>
+                            <div className="text-center text-secondary">
+                                <button className="btn btn-sm btn-danger btn-status">{convertType(item.type_id)}</button>
+                                <div className="mt-3">Ngày tạo : {convertDate(item.created_at)}</div>
                             </div>
                         </div>
                     </div>

@@ -10,5 +10,32 @@ export function convertDate(dateStr) {
     var date = new Date(dateStr),
       month = ("0" + (date.getMonth() + 1)).slice(-2),
       day = ("0" + date.getDate()).slice(-2);
-    return [date.getFullYear(), month, day].join("/");
+    return [day,month,date.getFullYear()].join("/");
+}
+
+export function convertType(type){
+  switch(type){
+    case 1: return 'Full time';
+    case 2: return 'Part time';
+    case 3: return 'Freelancer';
+    case 4: return 'Remote';
+    default: return '';
+  }
+}
+
+export function convertExperience(experience){
+  switch(experience){
+    case 1: return 'Fresher';
+    case 2: return 'Junior';
+    case 3: return 'Senior';
+    case 4: return 'DevOps';
+    case 5: return 'Frontend';
+    case 6: return 'Backend';
+    case 7: return 'Fullstack';
+    default: return '';
+  }
+}
+export function cutUrlImage(url){
+  const urlSplit = url.split('/');
+  return urlSplit[3];
 }

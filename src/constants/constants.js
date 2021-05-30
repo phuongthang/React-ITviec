@@ -16,7 +16,8 @@ const Constants = {
         LIST_JOB:'/list-job',
         USER_INFO:'/user-info',
         ORGANIZATION_INFO:'/organization-info',
-        JOB_INFORMATION:'/job-info',
+        CV_INFO:'/cv-info',
+        JOB_INFO:'/job-info',
     },
     HTTP_STATUS:{
         OK: 200,

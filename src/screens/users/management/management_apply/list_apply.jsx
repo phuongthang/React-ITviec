@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Constants from '../../../../constants/constants';
 import ReactPaginate from 'react-paginate';
 import { Link } from "react-router-dom";
-import { queryString } from '../../../../helpers/helpers';
+import { cutUrlImage, queryString } from '../../../../helpers/helpers';
 import applyApi from '../../../../api/user/applyApi';
 import ModalConfirmApplyCV from './modal_confirm_apply_cv';
 
@@ -54,8 +54,8 @@ function ListApply(props) {
             setRenderTable(apply.map(item => (
                 <tr key={item.id}>
                     <td>{apply.indexOf(item) + 1}</td>
-                    <td>{item.fullname}</td>
-                    <td><Link><img src={"http://localhost:8888/backend-web/public" +(item.image ? item.image : '/local/default.png')} alt="organization" className="thumb-md round-img"/></Link></td>
+                    <td><Link to={Constants.LINK_URL.CV_INFO+ `?user_id=${item.user_id}&cv=${item.image?cutUrlImage(item.image):''}`} className="text-secondary">{item.fullname}</Link></td>
+                    <td><Link to={Constants.LINK_URL.CV_INFO+ `?user_id=${item.user_id}&cv=${item.image?cutUrlImage(item.image):''}`}><img src={"http://localhost:8888/backend-web/public" +(item.images ? item.images : '/local/default.png')} alt="organization" className="thumb-md round-img"/></Link></td>
                     <td>{item.position}</td>
                     <td>
                     {

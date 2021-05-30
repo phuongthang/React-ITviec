@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import jobApi from "../../../../api/organization/jobApi";
 import Constants from "../../../../constants/constants";
-import { convertDate, queryString } from "../../../../helpers/helpers";
+import { convertDate, convertExperience, convertType, queryString } from "../../../../helpers/helpers";
 import ListApply from "../../management/management_apply/list_apply";
 import Apply from "./apply_information";
 
@@ -9,6 +9,7 @@ function Information(props) {
     const parameters = {
         organization_id: queryString('organization_id'),
         job_id: queryString('job_id'),
+        role: localStorage.getItem('role'),
     }
     const [data, setData] = useState({
     });
@@ -58,23 +59,23 @@ function Information(props) {
                         <h3>Chi tiết công việc</h3>
                         <div className="d-flex">
                             <p>Ngày bắt đầu : </p>
-                            <p>{data.start_date ? convertDate(data.start_date) : ''}</p>
+                            <p className="m-l-5"> {data.start_date ? convertDate(data.start_date) : ''}</p>
                         </div>
                         <div className="d-flex">
                             <p>Vị trí : </p>
-                            <p>{data.location ? data.location : ''}</p>
+                            <p className="m-l-5"> {data.location ? data.location : ''}</p>
                         </div>
                         <div className="d-flex">
                             <p>Số lượng : </p>
-                            <p>{data.count ? data.count : ''}</p>
+                            <p className="m-l-5"> {data.count ? data.count : ''}</p>
                         </div>
                         <div className="d-flex">
                             <p>Loại : </p>
-                            <p>{data.type_id ? data.type_id : ''}</p>
+                            <p className="m-l-5"> {data.type_id ? convertType(data.type_id) : ''}</p>
                         </div>
                         <div className="d-flex">
                             <p>Ngày kết thúc : </p>
-                            <p>{data.end_date ? convertDate(data.end_date) : ''}</p>
+                            <p className="m-l-5"> {data.end_date ? convertDate(data.end_date) : ''}</p>
                         </div>
                     </div>
                     <hr />
@@ -85,8 +86,8 @@ function Information(props) {
                 <div className="card">
                     <ul className="nav nav-tabs profile-tab" role="tablist">
                         <li className="nav-item"> <a className="nav-link active" data-toggle="tab" href="#detail" role="tab">Chi tiết</a> </li>
-                        <li className="nav-item"> <a className="nav-link" data-toggle="tab" href="#apply" role="tab">Ứng tuyển</a> </li>
-                        <li className="nav-item"> <a className="nav-link" data-toggle="tab" href="#list" role="tab">Danh sách</a> </li>
+                        {parameters.role === Constants.ROLE.USER && <li className="nav-item"> <a className="nav-link" data-toggle="tab" href="#apply" role="tab">Ứng tuyển</a> </li>}
+                        {parameters.role === Constants.ROLE.ORGANIZATION && <li className="nav-item"> <a className="nav-link" data-toggle="tab" href="#list" role="tab">Danh sách</a> </li>}
                     </ul>
                     <div className="tab-content">
                         <div className="tab-pane active" id="detail" role="tabpanel">
@@ -99,10 +100,10 @@ function Information(props) {
                                             </div>
                                             <div class="m-l-20">
                                                 <h4>{data.title ? data.title : ''}</h4>
-                                                <div className="d-flex">
-                                                    <p className="m-r-20 m-l-20">{data.experience_id ? data.experience_id : ''}</p>
-                                                    <p className="m-r-20 m-l-20"><i className="fa fa-map-marker text-danger m-r-15"></i>{data.location ? data.location : ''}</p>
-                                                    <p className="m-r-20 m-l-20"><i className="fa fa-bitcoin text-success m-r-10"></i>{data.salary ? data.salary : ''}</p>
+                                                <div className="d-flex mt-4">
+                                                    <p className="m-r-20 m-l-20"><i className="fa fa-grav text-info m-r-10"></i>Trình độ : {data.experience_id?convertExperience(data.experience_id):''}</p>
+                                                    <p className="m-r-20 m-l-20"><i className="fa fa-map-marker text-danger m-r-10"></i>Vị trí : {data.location?data.location:''}</p>
+                                                    <p className="m-r-20 m-l-20"><i className="fa fa-bitcoin text-success m-r-10"></i>Lương: {data.salary?data.salary:''}</p>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import MainLayout from '../../../layouts/main_layout';
+import Information from './information';
 
 function CVInformation(props) {
     useEffect(() => {
@@ -24,7 +25,7 @@ function CVInformation(props) {
                     <div className="col-12">
                         <div className="card">
                             <div className="card-body">
-
+                                <Information/>
                             </div>
                         </div>
                     </div>

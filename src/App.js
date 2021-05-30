@@ -11,7 +11,8 @@ import MainLayout from './screens/layouts/main_layout';
 import CreateCV from './screens/users/create/create_cv/create_cv';
 import CreateJob from './screens/users/create/create_job/create_job';
 import EditJob from './screens/users/edit/edit_job/edit_job';
-import BackgroundListJob from './screens/users/index/list_job/background_list_job';
+import ListJob from './screens/users/index/list_job/list_job';
+import CVInformation from './screens/users/information/cv_information/cv_information';
 import JobInformation from './screens/users/information/job_information/job_information';
 import OrganizationInformation from './screens/users/information/organization_information/organization_information';
 import UserInformation from './screens/users/information/user_information/user_information';
@@ -31,13 +32,14 @@ function App() {
         <Route exact path={Constants.LINK_URL.CREATE_JOB} component={CreateJob}/>
         <Route exact path={Constants.LINK_URL.EDIT_JOB} component={EditJob}/>
         <Route exact path={Constants.LINK_URL.CHANGE_PASSWORD} component={ChangePassword}/>
-        <Route exact path={Constants.LINK_URL.LIST_JOB} component={BackgroundListJob}/>
+        <Route exact path={Constants.LINK_URL.LIST_JOB} component={ListJob}/>
         <Route exact path={Constants.LINK_URL.ORGANIZATION_MANAGEMENT} component={OrganizationManagement}/>
         <Route exact path={Constants.LINK_URL.USER_MANAGEMENT} component={UserManagement}/>
         <Route exact path={Constants.LINK_URL.JOB_MANAGEMENT} component={JobManagement}/>
         <Route exact path={Constants.LINK_URL.USER_INFO} component={UserInformation}/>
         <Route exact path={Constants.LINK_URL.ORGANIZATION_INFO} component={OrganizationInformation}/>
-        <Route exact path={Constants.LINK_URL.JOB_INFORMATION} component={JobInformation}/>
+        <Route exact path={Constants.LINK_URL.JOB_INFO} component={JobInformation}/>
+        <Route exact path={Constants.LINK_URL.CV_INFO} component={CVInformation}/>
       </Switch>
     </BrowserRouter>
   );
