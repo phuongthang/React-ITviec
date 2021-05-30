@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import jobApi from "../../../../api/organization/jobApi";
 import Constants from "../../../../constants/constants";
 import { convertDate, queryString } from "../../../../helpers/helpers";
+import ListApply from "../../management/management_apply/list_apply";
 import Apply from "./apply_information";
 
 function Information(props) {
@@ -85,6 +86,7 @@ function Information(props) {
                     <ul className="nav nav-tabs profile-tab" role="tablist">
                         <li className="nav-item"> <a className="nav-link active" data-toggle="tab" href="#detail" role="tab">Chi tiết</a> </li>
                         <li className="nav-item"> <a className="nav-link" data-toggle="tab" href="#apply" role="tab">Ứng tuyển</a> </li>
+                        <li className="nav-item"> <a className="nav-link" data-toggle="tab" href="#list" role="tab">Danh sách</a> </li>
                     </ul>
                     <div className="tab-content">
                         <div className="tab-pane active" id="detail" role="tabpanel">
@@ -124,6 +126,11 @@ function Information(props) {
                         <div className="tab-pane" id="apply" role="tabpanel">
                             <div className="card-body">
                                 <Apply/>
+                            </div>
+                        </div>
+                        <div className="tab-pane" id="list" role="tabpanel">
+                            <div className="card-body">
+                                <ListApply/>
                             </div>
                         </div>
                     </div>

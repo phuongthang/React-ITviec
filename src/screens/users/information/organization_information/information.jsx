@@ -4,32 +4,33 @@ import profileApi from "../../../../api/organization/profileApi";
 import Constants from "../../../../constants/constants";
 import { convertDate, queryString } from "../../../../helpers/helpers";
 import { Link } from 'react-router-dom';
+import ReviewOrganization from "../../review/review_organization";
 
 function Information(props) {
     const parameters = {
-        id : queryString('id')
+        id: queryString('organization_id')
     }
     const [organization, setOrganization] = useState({
-        username:'',
-        fullname:'',
+        username: '',
+        fullname: '',
         email: '',
-        phone:'',
-        address:'',
-        description:'',
-        field:'',
-        establishment:'',
+        phone: '',
+        address: '',
+        description: '',
+        field: '',
+        establishment: '',
     });
     const [avatar, setAvatar] = useState('/local/default.png');
-    const getProfile = (id) =>{
+    const getProfile = (id) => {
         profileApi.getProfile({
-            id:id,
+            id: id,
         }).then((response) => {
             let mounted = true;
             if (mounted) {
                 console.log(response.data);
                 if (response.status === Constants.HTTP_STATUS.OK) {
                     setOrganization(response.data.organization);
-                    setAvatar(response.data.organization.image?response.data.organization.image:'/local/default.png');
+                    setAvatar(response.data.organization.image ? response.data.organization.image : '/local/default.png');
                 }
             }
             return () => mounted = false;
@@ -65,12 +66,12 @@ function Information(props) {
             setRenderListJob(listJob.map(item => (
                 <Link to={Constants.LINK_URL.JOB_INFORMATION + `?organization_id=${parameters.id}&job_id=${item.id}`} className="col-md-12 col-lg-12 col-xlg-12" key={item.id}>
                     <div className="card job-item">
-                        <div class="card-body mb-30 d-flex justify-content-between">
-                            <div class="d-flex">
-                                <div class="m-l-20">
-                                    <img src={"http://localhost:8888/backend-web/public/" + (item.image?item.image:'/local/default.png')} alt="" className="img-circle img-responsive thumb-lg mb-3" alt=""/>
+                        <div className="card-body mb-30 d-flex justify-content-between">
+                            <div className="d-flex">
+                                <div className="m-l-20">
+                                    <img src={"http://localhost:8888/backend-web/public/" + (item.image ? item.image : '/local/default.png')} alt="" className="img-circle img-responsive thumb-lg mb-3" alt="" />
                                 </div>
-                                <div class="m-l-20">
+                                <div className="m-l-20">
                                     <h4>{item.title}</h4>
                                     <div className="d-flex">
                                         <p className="m-r-20 m-l-20">{item.experience_id}</p>
@@ -95,7 +96,7 @@ function Information(props) {
                 <div className="card">
                     <div className="card-body">
                         <center className="m-t-30">
-                            <img className="img-circle" src={"http://localhost:8888/backend-web/public"+ avatar} width={150} />
+                            <img className="img-circle" src={"http://localhost:8888/backend-web/public" + avatar} width={150} />
                             <h4 className="card-title m-t-10"><label>{organization.fullname}</label></h4>
                             <h6 className="card-subtitle"><label>{organization.field}</label></h6>
                         </center>
@@ -139,9 +140,7 @@ function Information(props) {
                             </div>
                         </div>
                         <div className="tab-pane" id="review" role="tabpanel">
-                            <div className="card-body">
-                            
-                            </div>
+                            <ReviewOrganization/>
                         </div>
                     </div>
                 </div>

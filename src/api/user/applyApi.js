@@ -4,6 +4,14 @@ const applyApi = {
       const url = `/user/apply/create`;
       return axiosClient.post(url,params);
     },
+    getApply(params) {
+      const url = `/organization/apply/show`;
+      return axiosClient.post(url,params);
+    },
+    updateStatus(params) {
+      const url = `/organization/apply/status`;
+      return axiosClient.post(url,params);
+    },
 };
   
 export default applyApi;

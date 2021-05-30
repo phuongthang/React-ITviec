@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;400;500;600;700;800;900&display=swap');
 .login{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     user-select: none;
+    font-family: 'Roboto Slab', serif;
     &::after {
         margin: 0;
         padding: 0;
@@ -20,7 +22,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Montserrat', sans-serif !important;
     font-size: 12px;
     background-color: #ecf0f3;
     color: #a0a5a8;
@@ -86,7 +87,6 @@
         letter-spacing: 0.15px;
         border: none;
         outline: none;
-        font-family: 'Montserrat', sans-serif !important;
         background-color: #ecf0f3;
         transition: 0.25s ease;
         border-radius: 8px;

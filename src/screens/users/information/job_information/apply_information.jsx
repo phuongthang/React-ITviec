@@ -129,7 +129,7 @@ function Apply(props) {
             <div className="form-group">
                 <label className="col-md-12">Email :</label>
                 <div className="col-md-12">
-                    <input className="form-control form-control-line" defaultValue={user.email} name="email" required />
+                    <input className="form-control form-control-line" defaultValue={user.email} name="email" required onChange={handleChange} />
                 </div>
             </div>
             <div className="form-group">

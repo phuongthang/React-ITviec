@@ -9,7 +9,7 @@ function ListOrganization(props) {
     const [organization, setOrganization] = useState({});
     const [renderTable, setRenderTable] = useState();
     const [organizationId, setOrgaizationId] = useState();
-    const [limit, setLimit] = useState(1);
+    const [limit, setLimit] = useState(10);
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(1);
 
@@ -53,7 +53,7 @@ function ListOrganization(props) {
                     <td>{item.fullname}</td>
                     <td><img src={"http://localhost:8888/backend-web/public" +(item.image ? item.image : '/local/default.png')} alt="organization" className="thumb-md round-img"/></td>
                     <td>{item.field}</td>
-                    <td><Link to={`${Constants.LINK_URL.ORGANIZATION_INFO}?id=${item.id}`}><i className="fa fa-info m-r-5 text-info cell-click font-20"></i></Link> <i className="fa fa-minus-circle m-l-5 text-danger cell-click font-20" data-id={item.id} onClick={toggleModalConfirmDeleteOrganization}></i></td>
+                    <td><Link to={`${Constants.LINK_URL.ORGANIZATION_INFO}?organization_id=${item.id}`}><i className="fa fa-info m-r-5 text-info cell-click font-20"></i></Link> <i className="fa fa-minus-circle m-l-5 text-danger cell-click font-20" data-id={item.id} onClick={toggleModalConfirmDeleteOrganization}></i></td>
                 </tr>
             )));
         }

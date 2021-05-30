@@ -9,7 +9,7 @@ function ListUser(props) {
     const [user, setUser] = useState({});
     const [renderTable, setRenderTable] = useState();
 
-    const [limit, setLimit] = useState(1);
+    const [limit, setLimit] = useState(10);
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(1);
     const [userId, setUserId] = useState();
