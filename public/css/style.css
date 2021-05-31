@@ -52,6 +52,7 @@
 }
 .job-item{
     cursor: pointer;
+    border-radius: 20px;
 }
 .job-item:hover{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
@@ -60,6 +61,69 @@
 .anonymity{
     font-size: 12px;
 }
+
+.single-services {
+    border: 1px solid #eee;
+    padding: 44px 0;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+    margin-top: 20px;
+}
+ 
+.single-services .services-ion span {
+    font-size: 60px;
+    margin-bottom: 13px;
+    color: #014b85;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+.single-services .services-cap h5 a {
+    font-weight: 600;
+    font-size: 18px;
+    color: #001f38;
+    line-height: 1.4;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+.single-services .services-cap span {
+    color: #fb246a;
+    font-size: 18px;
+}
+.single-services:hover {
+    box-shadow: 0px 10px 30px 0px rgba(133, 66, 189, 0.1);
+}
+.single-services:hover .services-ion span {
+    color: #fb246a;
+}
+.single-services:hover .services-cap h5 a {
+    color: #fb246a;
+}
+
+.online-cv .cv-caption .pera1 {
+    font-family: "Muli", sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+}
+.online-cv .cv-caption .pera2 {
+    font-family: "Muli", sans-serif;
+    color: #fff;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 1.3;
+    margin-bottom: 51px;
+}
+.cv-bg {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(./assets/images/background/cv_bg.jpg);
+}
+
 /* common */
 
 

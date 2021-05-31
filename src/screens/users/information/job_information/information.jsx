@@ -92,7 +92,7 @@ function Information(props) {
                     <div className="tab-content">
                         <div className="tab-pane active" id="detail" role="tabpanel">
                             <div className="col-md-12 col-lg-12 col-xlg-12 mt-3">
-                                <div className="card job-item">
+                                <div className="job-item">
                                     <div class="card-body mb-30 d-flex justify-content-between">
                                         <div class="d-flex">
                                             <div class="m-l-20">

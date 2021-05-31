@@ -7,6 +7,7 @@ import Login from './screens/accounts/login';
 import JobManagement from './screens/admins/job_management/job_management';
 import OrganizationManagement from './screens/admins/organization_management/organization_management';
 import UserManagement from './screens/admins/user_management/user_management';
+import Dashboard from './screens/dashboard/dashboard';
 import MainLayout from './screens/layouts/main_layout';
 import CreateCV from './screens/users/create/create_cv/create_cv';
 import CreateJob from './screens/users/create/create_job/create_job';
@@ -22,7 +23,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path='/dashboard' component={MainLayout}/>
+        <Route exact path='/dashboard' component={Dashboard}/>
         <Route exact path={Constants.LINK_URL.LOGIN} component={Login}/>
         <Route exact path={Constants.LINK_URL.FORGOT_PASSWORD} component={ForgotPassword}/>
         <Route exact path={Constants.LINK_URL.PROFILE} component={Profile}/>

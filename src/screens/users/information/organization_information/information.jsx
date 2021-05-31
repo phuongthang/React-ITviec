@@ -65,7 +65,7 @@ function Information(props) {
         if (listJob) {
             setRenderListJob(listJob.map(item => (
                 <Link to={Constants.LINK_URL.JOB_INFO + `?organization_id=${parameters.id}&job_id=${item.id}`} className="col-md-12 col-lg-12 col-xlg-12" key={item.id}>
-                    <div className="card job-item">
+                    <div className="job-item mb-3">
                         <div className="card-body mb-30 d-flex justify-content-between">
                             <div className="d-flex">
                                 <div className="m-l-20">

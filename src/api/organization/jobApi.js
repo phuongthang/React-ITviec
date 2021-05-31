@@ -22,6 +22,10 @@ const jobApi = {
       const url = `/organization/job/detail`;
       return axiosClient.post(url,params);
     },
+    getJob() {
+      const url = `/user/job/get`;
+      return axiosClient.get(url);
+    },
 };
   
 export default jobApi;
