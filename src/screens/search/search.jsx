@@ -1,23 +1,22 @@
 import React, { useEffect } from 'react';
 import MainLayout from '../layouts/main_layout';
-import DashboardTopJob from './dashboard_top_job';
-import DashboardTopOrganization from './dashboard_top_organization';
+import SearchBody from './search_body';
 
-function Dashboard(props) {
+function Search(props) {
     useEffect(() => {
-        document.title = "Trang chủ";
+        document.title = "Tìm kiếm";
     }, []);
     return (
         <MainLayout>
             <div className="row page-titles">
                 <div className="col-md-5 align-self-center">
-                    <h3 className="text-themecolor">Trang chủ</h3>
+                    <h3 className="text-themecolor">Tìm kiếm</h3>
                 </div>
                 <div className="col-md-7 align-self-center">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-                        <li className="breadcrumb-item">Trang chủ</li>
-                        <li className="breadcrumb-item active">Trang chủ</li>
+                        <li className="breadcrumb-item">Công việc</li>
+                        <li className="breadcrumb-item active">Tìm kiếm</li>
                     </ol>
                 </div>
             </div>
@@ -27,9 +26,7 @@ function Dashboard(props) {
                         <div className="card">
                             <img src="./assets/images/background/h1_hero.jpg" alt="" />
                             <div className="card-body">
-                                <DashboardTopOrganization />
-
-                                <DashboardTopJob />
+                                <SearchBody/>
                             </div>
                         </div>
                     </div>
@@ -38,4 +35,4 @@ function Dashboard(props) {
         </MainLayout>
     );
 }
-export default Dashboard;
+export default Search;

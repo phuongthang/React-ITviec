@@ -32,6 +32,10 @@ const managementApi = {
       const url = `/admin/job/status`;
       return axiosClient.post(url,params);
     },
+    activeOrganization(params){
+      const url = `/admin/organization/active`;
+      return axiosClient.post(url,params);
+    },
 };
   
 export default managementApi;

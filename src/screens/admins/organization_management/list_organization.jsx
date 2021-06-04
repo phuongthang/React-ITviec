@@ -4,6 +4,7 @@ import Constants from '../../../constants/constants';
 import ReactPaginate from 'react-paginate';
 import ModalConfirmDeleteOrganization from './modal_confirm_delete_organization';
 import { Link } from "react-router-dom";
+import ModalConfirmActiveOrganization from './modal_confirm_active_organization';
 
 function ListOrganization(props) {
     const [organization, setOrganization] = useState({});
@@ -12,7 +13,8 @@ function ListOrganization(props) {
     const [limit, setLimit] = useState(10);
     const [pageCount, setPageCount] = useState(0);
     const [page, setPage] = useState(1);
-
+    const [text, setText] = useState();
+    const [flagActive, setFlagActive] = useState(null);
     const listOrganization = () => {
         managementApi.getOrganization().then((response) => {
             let mounted = true;
@@ -45,14 +47,39 @@ function ListOrganization(props) {
         setOrgaizationId(organizationId);
         setModalConfirmDeleteOrganization(!modalConfirmDeleteOrganization);
     };
+
+    const [modalConfirmActiveOrganization, setModalConfirmActiveOrganization] = useState(false);
+    const toggleModalConfirmActiveOrganization = (e) => {
+        const organizationId = e.target.dataset.id;
+        const active = e.target.dataset.active;
+        if(active === '0'){
+            setText("Bạn có chắc muốn ghim công ty này");
+            setFlagActive(1);
+        }
+        else{
+            setText("Bạn có chắc muốn hủy ghim công ty này");
+            setFlagActive(0);
+        }
+        setOrgaizationId(+organizationId);
+        setModalConfirmActiveOrganization(!modalConfirmActiveOrganization);
+    };
+    
     useEffect(() => {
         if (organization.length > 0) {
             setRenderTable(organization.map(item => (
                 <tr key={item.id}>
                     <td>{organization.indexOf(item) + 1}</td>
-                    <td>{item.fullname}</td>
-                    <td><img src={"http://localhost:8888/backend-web/public" +(item.image ? item.image : '/local/default.png')} alt="organization" className="thumb-md round-img"/></td>
+                    <td><Link className="text-secondary" to={`${Constants.LINK_URL.ORGANIZATION_INFO}?organization_id=${item.id}`}>{item.fullname}</Link></td>
+                    <td><Link className="text-secondary" to={`${Constants.LINK_URL.ORGANIZATION_INFO}?organization_id=${item.id}`}><img src={"http://localhost:8888/backend-web/public" +(item.image ? item.image : '/local/default.png')} alt="organization" className="thumb-md round-img"/></Link></td>
                     <td>{item.field}</td>
+                    <td>
+                    {
+                        item.status === 1 && <button className="btn btn-sm btn-success btn-status" data-id={item.id} data-acitve={item.status} onClick={toggleModalConfirmActiveOrganization} ><i className="fa fa-check-circle"></i> Đã kích hoạt</button>
+                    }
+                    {
+                        item.status === 0 && <button className="btn btn-sm btn-danger btn-status" data-id={item.id} data-active={item.status} onClick={toggleModalConfirmActiveOrganization}><i className="fa fa-ban"></i> Kích hoạt</button>
+                    }
+                    </td>
                     <td><Link to={`${Constants.LINK_URL.ORGANIZATION_INFO}?organization_id=${item.id}`}><i className="fa fa-info m-r-5 text-info cell-click font-20"></i></Link> <i className="fa fa-minus-circle m-l-5 text-danger cell-click font-20" data-id={item.id} onClick={toggleModalConfirmDeleteOrganization}></i></td>
                 </tr>
             )));
@@ -80,6 +107,7 @@ function ListOrganization(props) {
                             <th className="cell-click">Tổ chức</th>
                             <th className="cell-click">Ảnh</th>
                             <th className="cell-click">Lĩnh vực</th>
+                            <th className="cell-click">Trạng thái</th>
                             <th className="cell-click">Hành động</th>
                         </tr>
                     </thead>
@@ -104,6 +132,12 @@ function ListOrganization(props) {
             modal={modalConfirmDeleteOrganization}
             toggle={toggleModalConfirmDeleteOrganization}
             id={organizationId}/>
+            <ModalConfirmActiveOrganization
+            modal={modalConfirmActiveOrganization}
+            toggle={toggleModalConfirmActiveOrganization}
+            id={organizationId}
+            text={text}
+            flag={flagActive}/>
         </>
     );
 }

@@ -9,6 +9,7 @@ import OrganizationManagement from './screens/admins/organization_management/org
 import UserManagement from './screens/admins/user_management/user_management';
 import Dashboard from './screens/dashboard/dashboard';
 import MainLayout from './screens/layouts/main_layout';
+import Search from './screens/search/search';
 import CreateCV from './screens/users/create/create_cv/create_cv';
 import CreateJob from './screens/users/create/create_job/create_job';
 import EditJob from './screens/users/edit/edit_job/edit_job';
@@ -41,6 +42,7 @@ function App() {
         <Route exact path={Constants.LINK_URL.ORGANIZATION_INFO} component={OrganizationInformation}/>
         <Route exact path={Constants.LINK_URL.JOB_INFO} component={JobInformation}/>
         <Route exact path={Constants.LINK_URL.CV_INFO} component={CVInformation}/>
+        <Route exact path={Constants.LINK_URL.SEARCH} component={Search}/>
       </Switch>
     </BrowserRouter>
   );
