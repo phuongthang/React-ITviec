@@ -8,6 +8,7 @@ import TypeApi from '../../../../api/common/typeApi';
 import jobApi from '../../../../api/organization/jobApi';
 import Constants from '../../../../constants/constants';
 import MainLayout from '../../../layouts/main_layout';
+import LoadingOverlay from '../../../loading/loading_overlay';
 import ModalFail from '../../../modal/modal_fail';
 import ModalSuccess from '../../../modal/modal_success';
 
@@ -46,6 +47,7 @@ function CreateJob(props) {
     const [renderType, setRenderType] = useState();
     const [isSubmit, setIsSubmit] = useState(false);
     const [disableSubmit, setDisableSubmit] = useState(false);
+    const [loadingOverlay, setLoadingOverlay] = useState(false);
     const [modalSuccess, setModalSuccess] = useState(false);
     const toggleModalSuccess = () => {
         setModalSuccess(!modalSuccess);
@@ -96,11 +98,13 @@ function CreateJob(props) {
     const createJob = (params) => {
         jobApi.createJob(params).then((response) => {
             if (response.status === Constants.HTTP_STATUS.OK) {
+                setLoadingOverlay(false);
                 toggleModalSuccess();
                 setDisableSubmit(true);
             }
 
         }, (error) => {
+            setLoadingOverlay(false);
             toggleModalFail();
             setDisableSubmit(false);
         });
@@ -126,7 +130,7 @@ function CreateJob(props) {
                 experience:job.experience
 
             }
-            console.log(params);
+            setLoadingOverlay(true);
             createJob(params);
         }
     }, [isSubmit]);
@@ -339,6 +343,7 @@ function CreateJob(props) {
             </div>
             <ModalSuccess toggle={toggleModalSuccess} modal={modalSuccess} text="Đăng kí bài viết thành công !" />
             <ModalFail toggle={toggleModalFail} modal={modalFail} />
+            {loadingOverlay && <LoadingOverlay/>}
         </MainLayout>
     );
 }

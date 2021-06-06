@@ -26,6 +26,10 @@ function Search(props) {
                         <div className="card">
                             <img src="./assets/images/background/h1_hero.jpg" alt="" />
                             <div className="card-body">
+                                <div className="text-center">
+                                    <h2>Tìm Kiếm Công Việc</h2>
+                                    <div className=" text-center line"></div>
+                                </div>
                                 <SearchBody/>
                             </div>
                         </div>

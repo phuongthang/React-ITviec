@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import profileApi from "../../../api/organization/profileApi";
 import Constants from "../../../constants/constants";
+import { getInfoUserLogin } from "../../../helpers/helpers";
 import ModalConfirmProfile from "./modal_confirm_profile";
 
 function ProfileOrganization(props) {
-    const id = localStorage.getItem('id');
+    const userData = getInfoUserLogin();
     const [organization, setOrganization] = useState({
         username:'',
         fullname:'',
@@ -34,7 +35,7 @@ function ProfileOrganization(props) {
     }
     useEffect(() => {
             profileApi.getProfile({
-                id:id,
+                id:userData.id,
             }).then((response) => {
                 let mounted = true;
                 if (mounted) {

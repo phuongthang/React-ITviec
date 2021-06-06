@@ -26,9 +26,9 @@ const Constants = {
         FORBIDDEN: 403,
     },
     ROLE:{
-        ADMIN:'0',
-        USER:'1',
-        ORGANIZATION:'2',
+        ADMIN:0,
+        USER:1,
+        ORGANIZATION:2,
     }
 }
 export default Constants;

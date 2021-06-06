@@ -5,19 +5,22 @@ import profileOrganizationApi from "../../../api/organization/profileApi";
 import profileUserApi from "../../../api/user/profileApi";
 import "../../../assets/scss/common/modal.scss";
 import Constants from "../../../constants/constants";
+import { getInfoUserLogin } from "../../../helpers/helpers";
+import LoadingOverlay from "../../loading/loading_overlay";
 
 function ModalConfirmProfile(props) {
-    const id = localStorage.getItem('id');
-    const role = localStorage.getItem('role');
+    const userData = getInfoUserLogin();
     const flag = props.flag;
+    const [loadingOverlay, setLoadingOverlay] = useState(false);
     const [isSubmit, setIsSubmit] = useState(false);
     const onSubmit = (e) => {
+        setLoadingOverlay(true);
         setIsSubmit(true);
     }
     useEffect(() => {
         if (isSubmit) {
                 const form = new FormData();
-                form.append("id", id);
+                form.append("id", userData.id);
                 form.append("fullname", props.data.fullname);
                 form.append("phone", props.data.phone);
                 form.append("address", props.data.address );
@@ -25,7 +28,7 @@ function ModalConfirmProfile(props) {
                 if(flag === 1){
                     form.append("image", props.data.image);
                 }
-            if (role === Constants.ROLE.ADMIN) {
+            if (userData.role === Constants.ROLE.ADMIN) {
                 form.append('position', props.data.position);
                 profileAdminApi.postProfile(form).then((response) => {
                     let mounted = true;
@@ -43,10 +46,11 @@ function ModalConfirmProfile(props) {
                         }
     
                     }
+                    setLoadingOverlay(false);
                     return () => mounted = false;
                 });
             }
-            else if (role === Constants.ROLE.USER) {
+            else if (userData.role === Constants.ROLE.USER) {
                 form.append('position', props.data.position);
                 profileUserApi.postProfile(form).then((response) => {
                     let mounted = true;
@@ -64,10 +68,11 @@ function ModalConfirmProfile(props) {
                         }
     
                     }
+                    setLoadingOverlay(false);
                     return () => mounted = false;
                 });
             }
-            if (role === Constants.ROLE.ORGANIZATION) {
+            if (userData.role === Constants.ROLE.ORGANIZATION) {
                 form.append('field', props.data.field);
                 form.append('establishment', props.data.establishment);
                 profileOrganizationApi.postProfile(form).then((response) => {
@@ -86,6 +91,7 @@ function ModalConfirmProfile(props) {
                         }
     
                     }
+                    setLoadingOverlay(false);
                     return () => mounted = false;
                 });
             }
@@ -104,7 +110,9 @@ function ModalConfirmProfile(props) {
                     <button type="button" onClick={onSubmit} className="btn btn-info">Đồng ý</button>
                     <button type="button" className="btn btn-danger" onClick={props.toggle} >Hủy</button>
                 </div>
+                
             </Modal>
+            {loadingOverlay && <LoadingOverlay/>}
         </>
     );
 }

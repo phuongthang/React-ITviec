@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import cvApi from "../../../../api/user/cvApi";
 import Constants from "../../../../constants/constants";
+import { getInfoUserLogin } from "../../../../helpers/helpers";
 import ModalConfirmCreateCV from "./modal_confirm_create_cv";
 import ModalConfirmUpdateCV from "./modal_confirm_update_cv";
 function BodyCV(props) {
-    const role = localStorage.getItem('role');
-    const id = localStorage.getItem('id');
+    const userData = getInfoUserLogin();
     const [avatar, setAvatar] = useState('/local/default.png');
     const [flag, setFlag] = useState(false);
     const [data, setData] = useState({
@@ -53,7 +53,7 @@ function BodyCV(props) {
         setIsFile(true);
     }
     useEffect(() => {
-        getCV(id);
+        getCV(userData.id);
     }, []);
     const [modalConfirmCreateCV, setModalConfirmCreateCV] = useState(false);
     const toggleModalConfirmCreateCV = () => {
@@ -69,7 +69,7 @@ function BodyCV(props) {
             <div className="card">
                 <ul className="nav nav-tabs profile-tab d-flex justify-content-center" role="tablist">
                     <li className="nav-item"> <a className="nav-link active" data-toggle="tab" href="#profile" role="tab">CV Online</a> </li>
-                    {role === Constants.ROLE.USER && <li className="nav-item"> <a className="nav-link" data-toggle="tab" href="#edit" role="tab">Chỉnh sửa</a> </li>}
+                    {userData.role === Constants.ROLE.USER && <li className="nav-item"> <a className="nav-link" data-toggle="tab" href="#edit" role="tab">Chỉnh sửa</a> </li>}
                 </ul>
                 <div className="tab-content">
                     <div className="tab-pane active" id="profile" role="tabpanel">

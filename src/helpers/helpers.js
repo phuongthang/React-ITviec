@@ -39,3 +39,13 @@ export function cutUrlImage(url){
   const urlSplit = url.split('/');
   return urlSplit[3];
 }
+
+export function getInfoUserLogin() {
+  let userData = {};
+
+  if ('userData' in localStorage) {
+      userData = JSON.parse(localStorage.getItem('userData'));
+  }
+
+  return userData;
+}

@@ -3,13 +3,16 @@ import { Modal } from "reactstrap";
 import cvApi from "../../../../api/user/cvApi";
 import "../../../../assets/scss/common/modal.scss";
 import Constants from "../../../../constants/constants";
+import { getInfoUserLogin } from "../../../../helpers/helpers";
+import LoadingOverlay from "../../../loading/loading_overlay";
 import ModalFail from "../../../modal/modal_fail";
 import ModalSuccess from "../../../modal/modal_success";
 
 function ModalConfirmCreateCV(props) {
-    const id = localStorage.getItem('id');
+    const userData = getInfoUserLogin();
     const flag = props.flag;
     const [isSubmit, setIsSubmit] = useState(false);
+    const [loadingOverlay, setLoadingOverlay] = useState(false);
     const onSubmit = (e) => {
         setIsSubmit(true);
     }
@@ -23,8 +26,9 @@ function ModalConfirmCreateCV(props) {
     };
     useEffect(() => {
         if (isSubmit) {
+                setLoadingOverlay(true);
                 const form = new FormData();
-                form.append("id", id);
+                form.append("id", userData.id);
                 form.append("fullname", props.data.fullname);
                 form.append("email", props.data.email);
                 form.append("phone", props.data.phone);
@@ -39,7 +43,7 @@ function ModalConfirmCreateCV(props) {
                     let mounted = true;
                     if(mounted){
                         if(response.status === Constants.HTTP_STATUS.OK){
-                            console.log(response);
+                            setLoadingOverlay(false);
                             toggleModalSuccess();
                         }
                     }
@@ -47,7 +51,7 @@ function ModalConfirmCreateCV(props) {
                 },(error)=>{
                     let mounted = true;
                     if(mounted){
-                        console.log("fail");
+                        setLoadingOverlay(false);
                         toggleModalFail();
                     }
                     return ()=> mounted = false;
@@ -69,6 +73,7 @@ function ModalConfirmCreateCV(props) {
                 </div>
                 <ModalSuccess toggle={toggleModalSuccess} modal={modalSuccess} text="Tạo CV thành công !" />
                 <ModalFail toggle={toggleModalFail} modal={modalFail} />
+                {loadingOverlay && <LoadingOverlay/>}
             </Modal>
         </>
     );

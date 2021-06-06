@@ -13,7 +13,7 @@ function DashboardTopOrganization(props) {
                         <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6" key={item.id}>
                             <div className="single-services text-center mb-30">
                                 <div className="services-ion">
-                                    <Link to={`${Constants.LINK_URL.ORGANIZATION_INFO}?organization_id=${item.id}`}>
+                                    <Link to={`${Constants.LINK_URL.ORGANIZATION_INFO}?organization_id=${item.id}`} className="logo-hover">
                                     <img src={"http://localhost:8888/backend-web/public" +(item.image ? item.image : '/local/default.png')} alt="organization" className="thumb-sd round-img" />
                                     </Link>
                                 </div>
@@ -44,19 +44,13 @@ function DashboardTopOrganization(props) {
             <div className="row">
                 <div className="col-lg-12">
                     <div className="section-tittle text-center mt-3 mb-3">
-                        <h2>Browse Top Categories </h2>
+                        <h2>Doanh nghiệp</h2>
+                        <div className=" text-center line"></div>
                     </div>
                 </div>
             </div>
             <div className="row d-flex justify-contnet-center">
                 {renderTopOrganization}
-            </div>
-            <div className="row">
-                <div className="col-lg-12">
-                    <div className="text-center mt-5">
-                        <a href="job_listing.html" className="btn btn-outline btn-secondary">Xem tất cả</a>
-                    </div>
-                </div>
             </div>
         </>
     );

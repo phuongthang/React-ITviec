@@ -1,4 +1,6 @@
+import React from "react";
 function Header(props) {
+    const { userData } = props;
     return (
         <header className="topbar">
             <nav className="navbar top-navbar navbar-expand-md navbar-light">
@@ -31,23 +33,19 @@ function Header(props) {
                             </div>
                         </li>
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle text-muted waves-effect waves-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user" className="profile-pic" /></a>
+                            <a className="nav-link dropdown-toggle text-muted waves-effect waves-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src={"http://localhost:8888/backend-web/public/" + (userData.image ? userData.image : '/local/default.png')} alt="user" className="profile-pic" /></a>
                             <div className="dropdown-menu dropdown-menu-right scale-up">
                                 <ul className="dropdown-user">
                                     <li>
                                         <div className="dw-user-box">
-                                            <div className="u-img"><img src="../assets/images/users/1.jpg" alt="user" /></div>
+                                            <div className="u-img"><img src={"http://localhost:8888/backend-web/public/" + (userData.image ? userData.image : '/local/default.png')} alt="user" /></div>
                                             <div className="u-text">
-                                                <h4>Steave Jobs</h4>
-                                                <p className="text-muted">varun@gmail.com</p><a href="pages-profile.html" className="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                                <h4>{userData.fullname?userData.fullname:userData.username}</h4>
+                                                <p className="text-muted">{userData.email}</p></div>
                                         </div>
                                     </li>
                                     <li role="separator" className="divider" />
                                     <li><a href="index.html"><i className="ti-user" /> My Profile</a></li>
-                                    <li><a href="index.html"><i className="ti-wallet" /> My Balance</a></li>
-                                    <li><a href="index.html"><i className="ti-email" /> Inbox</a></li>
-                                    <li role="separator" className="divider" />
-                                    <li><a href="index.html"><i className="ti-settings" /> Account Setting</a></li>
                                     <li role="separator" className="divider" />
                                     <li><a href="index.html"><i className="fa fa-power-off" /> Logout</a></li>
                                 </ul>

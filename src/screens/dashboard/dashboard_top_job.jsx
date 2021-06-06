@@ -48,6 +48,7 @@ function DashboardTopJob(props) {
         <div className="list-job mt-5">
             <div className="section-tittle text-center mt-3 mb-3">
                 <h2>Công việc</h2>
+                <div className=" text-center line"></div>
             </div>
             {
                 renderTopJob
@@ -55,7 +56,7 @@ function DashboardTopJob(props) {
             <div className="row">
                 <div className="col-lg-12">
                     <div className="text-center mt-5">
-                        <a href="job_listing.html" className="btn btn-outline btn-secondary">Xem tất cả</a>
+                        <Link to={Constants.LINK_URL.SEARCH} className="btn btn-outline btn-secondary">Xem tất cả</Link>
                     </div>
                 </div>
             </div>

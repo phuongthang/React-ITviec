@@ -9,6 +9,7 @@ import jobApi from '../../../../api/organization/jobApi';
 import Constants from '../../../../constants/constants';
 import { queryString } from '../../../../helpers/helpers';
 import MainLayout from '../../../layouts/main_layout';
+import LoadingOverlay from '../../../loading/loading_overlay';
 import ModalFail from '../../../modal/modal_fail';
 import ModalSuccess from '../../../modal/modal_success';
 
@@ -51,6 +52,7 @@ function EditJob(props) {
     const [renderType, setRenderType] = useState();
     const [isSubmit, setIsSubmit] = useState(false);
     const [modalSuccess, setModalSuccess] = useState(false);
+    const [loadingOverlay, setLoadingOverlay] = useState(false);
     const toggleModalSuccess = () => {
         setModalSuccess(!modalSuccess);
     };
@@ -111,12 +113,13 @@ function EditJob(props) {
     const updateJob = (params) => {
         jobApi.updateJob(params).then((response) => {
             if (response.status === Constants.HTTP_STATUS.OK) {
-                console.log(response.data);
+                setLoadingOverlay(false);
                 toggleModalSuccess();
                 setDisableSubmit(true);
             }
 
         }, (error) => {
+            setLoadingOverlay(false);
             toggleModalFail();
             setDisableSubmit(false);
         });
@@ -143,7 +146,7 @@ function EditJob(props) {
                 experience:job.experience
 
             }
-            console.log(params);
+            setLoadingOverlay(true);
             updateJob(params);
         }
     }, [isSubmit]);
@@ -358,6 +361,7 @@ function EditJob(props) {
             </div>
             <ModalSuccess toggle={toggleModalSuccess} modal={modalSuccess} text={"Cập nhật thành công !"} />
             <ModalFail toggle={toggleModalFail} modal={modalFail} />
+            {loadingOverlay && <LoadingOverlay/>}
         </MainLayout>
     );
 }

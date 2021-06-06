@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Constants from '../../../constants/constants';
+import { getInfoUserLogin } from '../../../helpers/helpers';
 import MainLayout from "../../layouts/main_layout";
 import ProfileAdmin from './profile_admin';
 import ProfileOrganization from './profile_organization';
@@ -9,7 +10,7 @@ function Profile(props) {
     useEffect(() => {
         document.title = "Thông tin cá nhân";
     }, []);
-    const role = localStorage.getItem('role');
+    const userData = getInfoUserLogin();
     return (
         <MainLayout>
             <div className="row page-titles">
@@ -26,13 +27,13 @@ function Profile(props) {
             </div>
             <div className="container-fluid">
                 {
-                    role === Constants.ROLE.ADMIN && <ProfileAdmin/>
+                    userData.role === Constants.ROLE.ADMIN && <ProfileAdmin/>
                 }
                 {
-                    role === Constants.ROLE.USER && <ProfileUser/>
+                    userData.role === Constants.ROLE.USER && <ProfileUser/>
                 }
                 {
-                    role === Constants.ROLE.ORGANIZATION && <ProfileOrganization/>
+                    userData.role === Constants.ROLE.ORGANIZATION && <ProfileOrganization/>
                 }
             </div>
         </MainLayout>

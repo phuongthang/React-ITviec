@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { getInfoUserLogin } from "../../helpers/helpers";
+import LoadingOverlay from "../loading/loading_overlay";
 import Header from "./header";
 import LeftSidebar from "./left_sidebar";
 function MainLayout(props) {
@@ -6,20 +8,15 @@ function MainLayout(props) {
     setTimeout(() => {
         setIsLoader(false);
     }, 1000);
-
+    const userData = getInfoUserLogin();
     return (
         <div>
             {
-            isLoader && 
-            <div className="preloader">
-                <svg className="circular" viewBox="25 25 50 50">
-                    <circle className="path" cx={50} cy={50} r={20} fill="none" strokeWidth={2} strokeMiterlimit={10} />
-                </svg>
-            </div>
+            isLoader && <LoadingOverlay/>
             }
             <div id="main-wrapper">
-                {props.hasHeader && <Header />}
-                {props.hasLeftSidebar && <LeftSidebar />}
+                {props.hasHeader && <Header userData={userData}/>}
+                {props.hasLeftSidebar && <LeftSidebar userData={userData} />}
                 <div className="page-wrapper">
                     {props.children}
                     <footer className="footer">
