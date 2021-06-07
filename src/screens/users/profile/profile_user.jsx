@@ -64,7 +64,7 @@ function ProfileUser(props) {
     return (
         <div className="row">
             <div className="col-lg-4 col-xlg-3 col-md-5">
-                <div className="card">
+                <div className="card left-profile">
                     <div className="card-body">
                         <center className="m-t-30">
                             <img className="img-circle" src={"http://localhost:8888/backend-web/public"+ avatar} width={150} />
@@ -139,9 +139,10 @@ function ProfileUser(props) {
                                     </div>
                                     <div className="form-group">
                                         <label className="col-md-12">Ảnh :</label>
-                                        <div className="col-md-12">
-                                            <br />
-                                            <input type="file" onChange={handleChangeFile} />
+                                        <div className="d-flex justify-content-center">
+                                            <div className="col-md-6">
+                                                <input type="file" id="input-file-now" className="dropify" onChange={handleChangeFile} />
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="form-group text-center">

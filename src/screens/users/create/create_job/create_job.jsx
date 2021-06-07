@@ -7,14 +7,16 @@ import LanguageApi from '../../../../api/common/languageApi';
 import TypeApi from '../../../../api/common/typeApi';
 import jobApi from '../../../../api/organization/jobApi';
 import Constants from '../../../../constants/constants';
+import { getInfoUserLogin } from '../../../../helpers/helpers';
 import MainLayout from '../../../layouts/main_layout';
 import LoadingOverlay from '../../../loading/loading_overlay';
 import ModalFail from '../../../modal/modal_fail';
 import ModalSuccess from '../../../modal/modal_success';
 
 function CreateJob(props) {
+    const userData = getInfoUserLogin();
     const [job, setJob] = useState({
-        id: localStorage.getItem('id'),
+        id: userData.id,
         title: '',
         start_date: '',
         end_date: '',
@@ -113,7 +115,7 @@ function CreateJob(props) {
         if (isSubmit && !disableSubmit) {
             const params = {
                 title: job.title,
-                id: localStorage.getItem('id'),
+                id: userData.id,
                 start_date: job.start_date,
                 end_date: job.end_date,
                 position: job.position,

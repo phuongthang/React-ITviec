@@ -15,7 +15,6 @@ function ModalConfirmUpdateCV(props) {
     const onSubmit = (e) => {
         setIsSubmit(true);
     }
-    const [loadingOverlay, setLoadingOverlay] = useState(false);
     const [modalSuccess, setModalSuccess] = useState(false);
     const toggleModalSuccess = () => {
         setModalSuccess(!modalSuccess);
@@ -26,7 +25,6 @@ function ModalConfirmUpdateCV(props) {
     };
     useEffect(() => {
         if (isSubmit) {
-                setLoadingOverlay(true);
                 const form = new FormData();
                 form.append("id", userData.id);
                 form.append("fullname", props.data.fullname);
@@ -43,15 +41,13 @@ function ModalConfirmUpdateCV(props) {
                     let mounted = true;
                     if(mounted){
                         if(response.status === Constants.HTTP_STATUS.OK){
-                            setLoadingOverlay(false);
-                            toggleModalSuccess();
+                            window.location.reload();
                         }
                     }
                     return () => mounted = false;
                 },(error)=>{
                     let mounted = true;
                     if(mounted){
-                        setLoadingOverlay(false);
                         toggleModalFail();
                     }
                     return ()=> mounted = false;
@@ -71,9 +67,7 @@ function ModalConfirmUpdateCV(props) {
                     <button type="button" onClick={onSubmit} className="btn btn-info">Đồng ý</button>
                     <button type="button" className="btn btn-danger" onClick={props.toggle}>Hủy</button>
                 </div>
-                <ModalSuccess toggle={toggleModalSuccess} modal={modalSuccess} text="Cập nhật thành công !" />
                 <ModalFail toggle={toggleModalFail} modal={modalFail} />
-                {loadingOverlay && <LoadingOverlay/>}
             </Modal>
         </>
     );

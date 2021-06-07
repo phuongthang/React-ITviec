@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import reviewApi from "../../../api/user/reviewApi";
 import Constants from "../../../constants/constants";
-import { queryString } from "../../../helpers/helpers";
+import { getInfoUserLogin, queryString } from "../../../helpers/helpers";
 
 function ReviewOrganization(props) {
+    const userData = getInfoUserLogin();
     const parameters = {
-        user_id: localStorage.getItem('id'),
+        user_id: userData.id,
         organization_id: queryString('organization_id'),
     }
     const [status, setStatus] = useState(true);

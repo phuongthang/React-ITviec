@@ -152,6 +152,12 @@
     border-radius: 20px;
     border: 1px solid #4597f5;
 }
+.left-profile{
+    padding-bottom: 45px;
+}
+.left-profile-organization{
+    padding-bottom: 132px;
+}
 /* common */
 
 

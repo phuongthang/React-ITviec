@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import applyApi from "../../../../api/user/applyApi";
 import profileUserApi from "../../../../api/user/profileApi";
 import Constants from "../../../../constants/constants";
-import { queryString } from "../../../../helpers/helpers";
+import { getInfoUserLogin, queryString } from "../../../../helpers/helpers";
 import ModalFail from "../../../modal/modal_fail";
 import ModalSuccess from "../../../modal/modal_success";
 
 function Apply(props) {
+    const userData = getInfoUserLogin();
     const parameters = {
-        user_id : localStorage.getItem('id'),
+        user_id : userData.id,
         organization_id : queryString('organization_id'),
         job_id : queryString('job_id')
     }

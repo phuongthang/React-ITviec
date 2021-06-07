@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import Constants from "../../constants/constants";
 import loginApi from "../../api/account/loginApi";
 import registerApi from "../../api/account/registerApi";
+import LoadingOverlay from "../loading/loading_overlay";
 
 
 function Login(props) {
     const [isSignUp, setIsSignUp] = useState(false);
+    const [loadingOverlay, setLoadingOverlay] = useState(false);
     const disableSignUp = () =>{
         setIsSignUp(false);
     }
@@ -48,6 +50,7 @@ function Login(props) {
 
     const SignIn = (e) =>{
         e.preventDefault();
+        setLoadingOverlay(true);
         setSignIn(true);
     }
     const SignUp = (e) =>{
@@ -67,6 +70,7 @@ function Login(props) {
                     role:signInFormValue.role,
                 }).then((response) => {
                     let mounted = true;
+                    setLoadingOverlay(false);
                     if (mounted) {
                         if (response.status === Constants.HTTP_STATUS.OK) {
                             localStorage.setItem('userData',JSON.stringify(response.data.data));
@@ -76,6 +80,7 @@ function Login(props) {
                     return () => mounted = false;
                 }, (error) => {
                     let mounted = true;
+                    setLoadingOverlay(false);
                     if (mounted) {
                         if(error.response.status === Constants.HTTP_STATUS.UNAUTHORIZED){
                             setSignIn(false);
@@ -173,6 +178,7 @@ function Login(props) {
                     </div>
                 </div>
             </div>
+            {loadingOverlay && <LoadingOverlay/>}
         </div>
     );
 }

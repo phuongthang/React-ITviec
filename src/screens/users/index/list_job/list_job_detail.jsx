@@ -46,13 +46,13 @@ function ListJobDetail(props) {
                             </div>
                             <div className="text-center text-secondary">
                                 {
-                                    item.status === 3 && <button className="btn btn-sm btn-warning btn-status"><i className="fa fa-clock-o"></i> Hết hạn</button>
+                                    item.status === 2 && <button className="btn btn-sm btn-warning btn-status"><i className="fa fa-clock-o"></i> Hết hạn</button>
                                 }
                                 {
-                                    item.status === 2 && <button className="btn btn-sm btn-success btn-status"><i className="fa fa-check-circle"></i> Hoạt động</button>
+                                    item.status === 1 && <button className="btn btn-sm btn-success btn-status"><i className="fa fa-check-circle"></i> Hoạt động</button>
                                 }
                                 {
-                                    item.status === 1 && <button className="btn btn-sm btn-danger btn-status"><i className="fa fa-ban"></i> Chờ</button>
+                                    item.status === 0 && <button className="btn btn-sm btn-danger btn-status"><i className="fa fa-ban"></i> Chờ</button>
                                 }
                                 <div className="mt-3">Ngày tạo : {convertDate(item.created_at)}</div>
                             </div>

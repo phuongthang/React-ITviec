@@ -6,6 +6,7 @@ import ModalConfirmDeleteJob from './modal_confirm_delete_job';
 import { Button } from 'reactstrap';
 import ModalConfirmActiveJob from './modal_confirm_active_job';
 import ModalConfirmActiveStatusJob from './modal_confirm_status_job';
+import { Link } from "react-router-dom";
 
 function ListJob(props) {
     const [job, setJob] = useState({});
@@ -85,8 +86,8 @@ function ListJob(props) {
             setRenderTable(job.map(item => (
                 <tr key={item.id}>
                     <td>{job.indexOf(item) + 1}</td>
-                    <td>{item.title}</td>
-                    <td><img src={"http://localhost:8888/backend-web/public" +(item.image ? item.image : '/local/default.png')} alt="organization" className="thumb-md round-img"/></td>
+                    <td><Link className="text-secondary" to={`${Constants.LINK_URL.JOB_INFO}?organization_id=${item.organization_id}&job_id=${item.id}`}>{item.title}</Link></td>
+                    <td><Link className="text-secondary" to={`${Constants.LINK_URL.ORGANIZATION_INFO}?organization_id=${item.organization_id}`}><img src={"http://localhost:8888/backend-web/public" +(item.image ? item.image : '/local/default.png')} alt="organization" className="thumb-md round-img"/> </Link></td>
                     <td>{item.location}</td>
                     <td>
                     {
@@ -105,7 +106,7 @@ function ListJob(props) {
                     }
                     </td>
                     <td><i className="fa fa-paperclip m-r-5 text-info cell-click font-20" data-id={item.id} data-status={item.status} onClick={toggleModalConfirmActiveStatusJob}></i></td>
-                    <td><i className="fa fa-info m-r-5 text-info cell-click font-20" data-id={item.id}></i> <i className="fa fa-minus-circle m-l-5 text-danger cell-click font-20" data-id={item.id} onClick={toggleModalConfirmDeleteJob}></i></td>
+                    <td><Link className="text-secondary" to={`${Constants.LINK_URL.JOB_INFO}?organization_id=${item.organization_id}&job_id=${item.id}`}><i className="fa fa-info m-r-5 text-info cell-click font-20"></i></Link> <i className="fa fa-minus-circle m-l-5 text-danger cell-click font-20" data-id={item.id} onClick={toggleModalConfirmDeleteJob}></i></td>
                 </tr>
             )));
         }

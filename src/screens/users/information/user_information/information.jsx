@@ -6,7 +6,7 @@ import { queryString } from "../../../../helpers/helpers";
 
 function Information(props) {
     const parameters = {
-        id: queryString('id'),
+        id: queryString('user_id'),
     }
     const [user, setUser] = useState({
         username: '',

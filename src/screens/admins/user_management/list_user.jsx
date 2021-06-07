@@ -54,10 +54,10 @@ function ListUser(props) {
             setRenderTable(user.map(item => (
                 <tr key={item.id}>
                     <td>{user.indexOf(item)+1}</td>
-                    <td>{item.fullname}</td>
-                    <td><img src={"http://localhost:8888/backend-web/public" + (item.image ? item.image: '/local/default.png')} alt="organization" className="thumb-md round-img"/></td>
+                    <td><Link className="text-secondary" to={`${Constants.LINK_URL.USER_INFO}?user_id=${item.id}`}>{item.fullname}</Link></td>
+                    <td><Link className="text-secondary" to={`${Constants.LINK_URL.USER_INFO}?user_id=${item.id}`}><img src={"http://localhost:8888/backend-web/public" + (item.image ? item.image: '/local/default.png')} alt="organization" className="thumb-md round-img"/></Link></td>
                     <td>{item.position}</td>
-                    <td><Link to={`${Constants.LINK_URL.USER_INFO}?id=${item.id}`}><i className="fa fa-info m-r-5 text-info cell-click font-20" data-id={item.id}></i></Link> <i className="fa fa-minus-circle m-l-5 text-danger cell-click font-20" data-id={item.id} onClick={toggleModalConfirmDeleteUser}></i></td>
+                    <td><Link to={`${Constants.LINK_URL.USER_INFO}?user_id=${item.id}`}><i className="fa fa-info m-r-5 text-info cell-click font-20" data-id={item.id}></i></Link> <i className="fa fa-minus-circle m-l-5 text-danger cell-click font-20" data-id={item.id} onClick={toggleModalConfirmDeleteUser}></i></td>
                 </tr>
             )));
         }

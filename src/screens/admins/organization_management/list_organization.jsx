@@ -74,10 +74,10 @@ function ListOrganization(props) {
                     <td>{item.field}</td>
                     <td>
                     {
-                        item.status === 1 && <button className="btn btn-sm btn-success btn-status" data-id={item.id} data-acitve={item.status} onClick={toggleModalConfirmActiveOrganization} ><i className="fa fa-check-circle"></i> Đã kích hoạt</button>
+                        item.active === 1 && <button className="btn btn-sm btn-success btn-status" data-id={item.id} data-acitve={item.active} onClick={toggleModalConfirmActiveOrganization} ><i className="fa fa-check-circle"></i> Đã kích hoạt</button>
                     }
                     {
-                        item.status === 0 && <button className="btn btn-sm btn-danger btn-status" data-id={item.id} data-active={item.status} onClick={toggleModalConfirmActiveOrganization}><i className="fa fa-ban"></i> Kích hoạt</button>
+                        item.active === 0 && <button className="btn btn-sm btn-danger btn-status" data-id={item.id} data-active={item.active} onClick={toggleModalConfirmActiveOrganization}><i className="fa fa-ban"></i> Kích hoạt</button>
                     }
                     </td>
                     <td><Link to={`${Constants.LINK_URL.ORGANIZATION_INFO}?organization_id=${item.id}`}><i className="fa fa-info m-r-5 text-info cell-click font-20"></i></Link> <i className="fa fa-minus-circle m-l-5 text-danger cell-click font-20" data-id={item.id} onClick={toggleModalConfirmDeleteOrganization}></i></td>

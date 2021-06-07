@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import jobApi from "../../../../api/organization/jobApi";
 import Constants from "../../../../constants/constants";
-import { convertDate, convertExperience, convertType, queryString } from "../../../../helpers/helpers";
+import { convertDate, convertExperience, convertType, getInfoUserLogin, queryString } from "../../../../helpers/helpers";
 import ListApply from "../../management/management_apply/list_apply";
 import Apply from "./apply_information";
 
 function Information(props) {
+    const userData = getInfoUserLogin();
     const parameters = {
         organization_id: queryString('organization_id'),
         job_id: queryString('job_id'),
-        role: localStorage.getItem('role'),
+        role: userData.role,
     }
     const [data, setData] = useState({
     });
@@ -22,7 +23,6 @@ function Information(props) {
             let mounted = true;
             if (mounted) {
                 if (response.status === Constants.HTTP_STATUS.OK) {
-                    console.log(response.data.jobs);
                     setData(response.data.jobs);
                     setAvatar(response.data.jobs.image ? response.data.jobs.image : '/local/default.png');
                 }
@@ -93,12 +93,12 @@ function Information(props) {
                         <div className="tab-pane active" id="detail" role="tabpanel">
                             <div className="col-md-12 col-lg-12 col-xlg-12 mt-3">
                                 <div className="job-item">
-                                    <div class="card-body mb-30 d-flex justify-content-between">
-                                        <div class="d-flex">
-                                            <div class="m-l-20">
+                                    <div className="card-body mb-30 d-flex justify-content-between">
+                                        <div className="d-flex">
+                                            <div className="m-l-20">
                                                 <img alt="" src={"http://localhost:8888/backend-web/public" + avatar} className="img-circle img-responsive thumb-lg mb-3" alt="" />
                                             </div>
-                                            <div class="m-l-20">
+                                            <div className="m-l-20">
                                                 <h4>{data.title ? data.title : ''}</h4>
                                                 <div className="d-flex mt-4">
                                                     <p className="m-r-20 m-l-20"><i className="fa fa-grav text-info m-r-10"></i>Trình độ : {data.experience_id?convertExperience(data.experience_id):''}</p>
