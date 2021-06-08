@@ -24,7 +24,6 @@ function Search(props) {
                 <div className="row">
                     <div className="col-12">
                         <div className="card">
-                            <img src="./assets/images/background/h1_hero.jpg" alt="" />
                             <div className="card-body">
                                 <div className="text-center">
                                     <h2>Tìm Kiếm Công Việc</h2>

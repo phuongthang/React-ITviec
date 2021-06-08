@@ -87,7 +87,7 @@ function Information(props) {
                     <ul className="nav nav-tabs profile-tab" role="tablist">
                         <li className="nav-item"> <a className="nav-link active" data-toggle="tab" href="#detail" role="tab">Chi tiết</a> </li>
                         {parameters.role === Constants.ROLE.USER && <li className="nav-item"> <a className="nav-link" data-toggle="tab" href="#apply" role="tab">Ứng tuyển</a> </li>}
-                        {parameters.role === Constants.ROLE.ORGANIZATION && <li className="nav-item"> <a className="nav-link" data-toggle="tab" href="#list" role="tab">Danh sách</a> </li>}
+                        {parameters.role === Constants.ROLE.ORGANIZATION && (parameters.organization_id === ''+userData.id ?<li className="nav-item"> <a className="nav-link" data-toggle="tab" href="#list" role="tab">Danh sách</a> </li>:'')}
                     </ul>
                     <div className="tab-content">
                         <div className="tab-pane active" id="detail" role="tabpanel">

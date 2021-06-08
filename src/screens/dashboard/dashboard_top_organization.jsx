@@ -19,7 +19,7 @@ function DashboardTopOrganization(props) {
                                 </div>
                                 <div className="services-cap mt-2">
                                     <h5><Link to={`${Constants.LINK_URL.ORGANIZATION_INFO}?organization_id=${item.id}`}>{item.fullname}</Link></h5>
-                                    <span><Link className="text-warning" to={`${Constants.LINK_URL.ORGANIZATION_INFO}?organization_id=${item.id}`}>(653)</Link></span>
+                                    <span><Link className="text-work" to={`${Constants.LINK_URL.ORGANIZATION_INFO}?organization_id=${item.id}`}>{item.count} việc làm - tại {item.address}</Link></span>
                                 </div>
                             </div>
                         </div>
@@ -44,7 +44,7 @@ function DashboardTopOrganization(props) {
             <div className="row">
                 <div className="col-lg-12">
                     <div className="section-tittle text-center mt-3 mb-3">
-                        <h2>Doanh nghiệp</h2>
+                        <h2>Nhà Tuyển Dụng Hàng Đầu</h2>
                         <div className=" text-center line"></div>
                     </div>
                 </div>

@@ -173,6 +173,12 @@ function SearchBody(props) {
                         </div>
                         <div className="form-group">
                             <div className="form-group">
+                                <label htmlFor="">Lĩnh vực</label>
+                                <input type="text" className="form-control" name="field" />
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <div className="form-group">
                                 <label htmlFor="">Tên công việc</label>
                                 <input type="text" className="form-control" name="title" onChange={handelChangeQuery} value={parameterQuery.title} />
                             </div>
@@ -248,8 +254,8 @@ function SearchBody(props) {
             </div>
             {pageCount > 1 && <div className="d-flex justify-content-center">
                 <ReactPaginate
-                    previousLabel={"<"}
-                    nextLabel={">"}
+                    previousLabel={""}
+                    nextLabel={""}
                     breakLabel={"..."}
                     breakClassName={"break-me"}
                     pageCount={pageCount}

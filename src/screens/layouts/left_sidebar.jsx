@@ -27,23 +27,15 @@ function LeftSidebar(props) {
                         <li className="nav-devider" />
                         {
                             userData.role === Constants.ROLE.ADMIN &&
-                            <><li className="nav-small-cap"><h4>Quản trị viên</h4></li>
-                                <li> <a className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Thông tin cá nhân</span></a>
-                                    <ul>
-                                        <li><Link to={Constants.LINK_URL.PROFILE}>Thông tin</Link></li>
-                                        <li><Link to={Constants.LINK_URL.CHANGE_PASSWORD}>Đổi mật khẩu</Link></li>
-                                        <li><Link to={Constants.LINK_URL.LOGIN}>Đăng xuất</Link></li>
-                                    </ul>
-                                </li>
-                                <li> <a className="has-arrow waves-effect waves-dark"><i className="mdi mdi-bullseye" /><span className="hide-menu">Quản lý</span></a>
-                                    <ul>
-                                        <li><Link to={Constants.LINK_URL.USER_MANAGEMENT}>Tài khoản cá nhân</Link></li>
-                                        <li><Link to={Constants.LINK_URL.ORGANIZATION_MANAGEMENT}>Tài khoản tổ chức</Link></li>
-                                        <li><Link to={Constants.LINK_URL.JOB_MANAGEMENT}>Quản lí bài đăng</Link></li>
-                                    </ul>
-                                </li>
-                                <li> <Link className="has-arrow waves-effect waves-dark" to={Constants.LINK_URL.LOGIN}><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link>
-                                </li>
+                            <>
+                                <li className="nav-small-cap"><h4>Quản trị viên</h4></li>
+                                <li> <Link to={Constants.LINK_URL.DASHBOARD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Trang chủ</span></Link></li>
+                                <li> <Link to={Constants.LINK_URL.PROFILE} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Thông tin cá nhân</span></Link></li>
+                                <li><Link to={Constants.LINK_URL.USER_MANAGEMENT} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Tài khoản cá nhân</span></Link></li>
+                                <li><Link to={Constants.LINK_URL.ORGANIZATION_MANAGEMENT} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Tài khoản doanh nghiệp</span></Link></li>
+                                <li><Link to={Constants.LINK_URL.JOB_MANAGEMENT} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Quản lí công việc</span></Link></li>
+                                <li> <Link to={Constants.LINK_URL.CHANGE_PASSWORD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Đổi mật khẩu</span></Link></li>
+                                <li> <Link to={Constants.LINK_URL.LOGIN} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link></li>
                             </>
                         }
 
@@ -51,21 +43,12 @@ function LeftSidebar(props) {
                             userData.role === Constants.ROLE.USER &&
                             <>
                                 <li className="nav-small-cap"><h4>Cá Nhân</h4></li>
-                                <li> <a className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Thông tin cá nhân</span></a>
-                                    <ul>
-                                        <li><Link to={Constants.LINK_URL.PROFILE}>Thông tin</Link></li>
-                                        <li><Link to={Constants.LINK_URL.CHANGE_PASSWORD}>Đổi mật khẩu</Link></li>
-                                        <li><Link to={Constants.LINK_URL.LOGIN}>Đăng xuất</Link></li>
-                                    </ul>
-                                </li>
-                                <li> <a className="has-arrow waves-effect waves-dark"><i className="mdi mdi-bullseye" /><span className="hide-menu">Quản lý</span></a>
-                                    <ul>
-                                        <li><Link to={Constants.LINK_URL.CREATE_CV}>Tạo CV online</Link></li>
-                                        <li><Link to="/dashboard">Nhà tuyển dụng</Link></li>
-                                    </ul>
-                                </li>
-                                <li> <Link className="has-arrow waves-effect waves-dark" to={Constants.LINK_URL.LOGIN}><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link>
-                                </li>
+                                <li> <Link to={Constants.LINK_URL.DASHBOARD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Trang chủ</span></Link></li>
+                                <li> <Link to={Constants.LINK_URL.PROFILE} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Thông tin cá nhân</span></Link></li>
+                                <li><Link to={Constants.LINK_URL.CREATE_CV} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Danh sách bài viết</span></Link></li>
+                                <li><Link to={Constants.LINK_URL.CREATE_JOB} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Xác nhận ứng tuyển</span></Link></li>
+                                <li> <Link to={Constants.LINK_URL.LOGIN} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link></li>
+                                <li> <Link to={Constants.LINK_URL.CHANGE_PASSWORD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Đổi mật khẩu</span></Link></li>
                             </>
                         }
 
@@ -73,22 +56,13 @@ function LeftSidebar(props) {
                             userData.role === Constants.ROLE.ORGANIZATION &&
                             <>
                                 <li className="nav-small-cap"><h4>Doanh nghiệp</h4></li>
-                                <li> <a className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Thông tin cá nhân</span></a>
-                                    <ul>
-                                        <li><Link to={Constants.LINK_URL.PROFILE}>Thông tin</Link></li>
-                                        <li><Link to={Constants.LINK_URL.CHANGE_PASSWORD}>Đổi mật khẩu</Link></li>
-                                        <li><Link to={Constants.LINK_URL.LOGIN}>Đăng xuất</Link></li>
-                                    </ul>
-                                </li>
-                                <li> <a className="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i className="mdi mdi-bullseye" /><span className="hide-menu">Quản lý</span></a>
-                                    <ul>
-                                        <li><Link to={Constants.LINK_URL.LIST_JOB + `?organization_id=${userData.id}` }>Danh sách bài viết</Link></li>
-                                        <li><Link to={Constants.LINK_URL.CREATE_JOB}>Tạo bài viết</Link></li>
-                                        <li><Link to="/dashboard">Danh sách ứng viên</Link></li>
-                                    </ul>
-                                </li>
-                                <li> <Link to={Constants.LINK_URL.LOGIN} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link>
-                                </li>
+                                <li> <Link to={Constants.LINK_URL.DASHBOARD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Trang chủ</span></Link></li>
+                                <li> <Link to={Constants.LINK_URL.PROFILE} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Thông tin cá nhân</span></Link></li>
+                                <li><Link to={Constants.LINK_URL.ORGANIZATION_INFO + `?organization_id=${userData.id}` } className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Thông tin chi tiết</span></Link></li>
+                                <li><Link to={Constants.LINK_URL.LIST_JOB + `?organization_id=${userData.id}` } className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Danh sách bài viết</span></Link></li>
+                                <li><Link to={Constants.LINK_URL.CREATE_JOB} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Tạo bài viết</span></Link></li>
+                                <li> <Link to={Constants.LINK_URL.CHANGE_PASSWORD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Đổi mật khẩu</span></Link></li>
+                                <li> <Link to={Constants.LINK_URL.LOGIN} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link></li>
                             </>
                         }
                     </ul>

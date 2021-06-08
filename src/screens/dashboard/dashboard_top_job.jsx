@@ -47,7 +47,7 @@ function DashboardTopJob(props) {
     return (
         <div className="list-job mt-5">
             <div className="section-tittle text-center mt-3 mb-3">
-                <h2>Công việc</h2>
+                <h2>Công Việc Hàng Đầu</h2>
                 <div className=" text-center line"></div>
             </div>
             {

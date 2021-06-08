@@ -63,7 +63,6 @@
 }
 
 .single-services {
-    border: 1px solid #eee;
     padding: 44px 0;
     -webkit-transition: 0.4s;
     -moz-transition: 0.4s;
@@ -97,17 +96,19 @@
     font-size: 18px;
 }
 .single-services:hover {
-    box-shadow: 0px 10px 30px 0px rgba(133, 66, 189, 0.1);
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    border: 1px solid #fff;
 }
 .single-services:hover .services-ion span {
-    color: #fb246a;
+    color: #4597f5;
 }
 .single-services:hover .services-cap h5 a {
-    color: #fb246a;
+    color: #4597f5;
 }
 .thumb-sd{
-    height: 68px;
-    width: 68px
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
 }
 .left-search{
     border-radius: 20px;
@@ -158,6 +159,12 @@
 .left-profile-organization{
     padding-bottom: 132px;
 }
+.text-work{
+    font-weight: 700;
+    color: #4597f5;
+    font-size: 14px;
+}
+
 /* common */
 
 

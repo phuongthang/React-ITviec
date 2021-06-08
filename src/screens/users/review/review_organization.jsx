@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import reviewApi from "../../../api/user/reviewApi";
 import Constants from "../../../constants/constants";
 import { getInfoUserLogin, queryString } from "../../../helpers/helpers";
+import Vote from "./vote";
 
 function ReviewOrganization(props) {
     const userData = getInfoUserLogin();
@@ -9,6 +10,14 @@ function ReviewOrganization(props) {
         user_id: userData.id,
         organization_id: queryString('organization_id'),
     }
+    const [rating, setRating] = useState(0);
+    const [count, setCount] = useState(5);
+    const [color, setColor] = useState({
+        filled: "#f5eb3b",
+        unfilled: "#DCDCDC",
+    });
+
+
     const [status, setStatus] = useState(true);
     const [content, setContent] = useState('');
     const [renderReview, setRenderReview] = useState();
@@ -53,7 +62,6 @@ function ReviewOrganization(props) {
             let mounted = true;
             if (mounted) {
                 if (response.status === Constants.HTTP_STATUS.OK) {
-                    console.log(response.data.reviews);
                     setRenderReview(response.data.reviews.map(item=>(
                         <li key={item.id}>
                             {
@@ -102,11 +110,12 @@ function ReviewOrganization(props) {
                 </div>
             </div>
             <div className="card-body b-t">
-                <div className="m-b-10">
+                <div className="m-b-10 d-flex">
                     <label className="custom-control custom-checkbox">
                         <input type="checkbox" className="custom-control-input" checked={status} onChange={onCheck} />
-                        <span className="custom-control-label anonymity">Công khai</span>
+                        <span className="custom-control-label anonymity m-r-10">Công khai</span>
                     </label>
+                    <Vote rating={rating} onRating={(rate) => setRating(rate)} count={count} color={color}/>
                 </div>
                 <div className="row">
                     <div className="col-11">

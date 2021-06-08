@@ -24,7 +24,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path='/dashboard' component={Dashboard}/>
+        <Route exact path={Constants.LINK_URL.DASHBOARD} component={Dashboard}/>
         <Route exact path={Constants.LINK_URL.LOGIN} component={Login}/>
         <Route exact path={Constants.LINK_URL.FORGOT_PASSWORD} component={ForgotPassword}/>
         <Route exact path={Constants.LINK_URL.PROFILE} component={Profile}/>
