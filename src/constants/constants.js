@@ -1,6 +1,6 @@
 const Constants = {
     LINK_URL:{
-        LOGIN: "/login",
+        LOGIN: "/",
         FORGOT_PASSWORD: "/forgot-password",
         HOME_PAGE:'/home-page',
         PROFILE:'/profile',

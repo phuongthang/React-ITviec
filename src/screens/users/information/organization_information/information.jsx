@@ -94,7 +94,7 @@ function Information(props) {
         <div className="row">
             <div className="col-lg-4 col-xlg-3 col-md-5">
                 <div className="card">
-                    <div className="card-body">
+                    <div className="card-body left-profile">
                         <center className="m-t-30">
                             <img className="img-circle" src={"http://localhost:8888/backend-web/public" + avatar} width={150} />
                             <h4 className="card-title m-t-10"><label>{organization.fullname}</label></h4>

@@ -13,6 +13,13 @@ export function convertDate(dateStr) {
     return [day,month,date.getFullYear()].join("/");
 }
 
+export function convertDateTime(dateStr) {
+  var date = new Date(dateStr),
+    month = ("0" + (date.getMonth() + 1)).slice(-2),
+    day = ("0" + date.getDate()).slice(-2);
+  return `Tháng ${month} năm ${date.getFullYear()}`;
+}
+
 export function convertType(type){
   switch(type){
     case 1: return 'Full time';
