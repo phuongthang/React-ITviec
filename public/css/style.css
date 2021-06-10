@@ -207,6 +207,16 @@
     font-weight: 800;
     color:#4288f5 ;
 }
+.parent-item{
+    position: relative;
+}
+.child-item{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: 220px;
+    top: 0;
+}
 /* common */
 
 

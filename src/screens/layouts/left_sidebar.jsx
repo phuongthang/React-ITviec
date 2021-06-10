@@ -45,10 +45,10 @@ function LeftSidebar(props) {
                                 <li className="nav-small-cap"><h4>Cá Nhân</h4></li>
                                 <li> <Link to={Constants.LINK_URL.DASHBOARD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Trang chủ</span></Link></li>
                                 <li> <Link to={Constants.LINK_URL.PROFILE} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Thông tin cá nhân</span></Link></li>
-                                <li><Link to={Constants.LINK_URL.CREATE_CV} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Danh sách bài viết</span></Link></li>
-                                <li><Link to={Constants.LINK_URL.CREATE_JOB} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Xác nhận ứng tuyển</span></Link></li>
-                                <li> <Link to={Constants.LINK_URL.LOGIN} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link></li>
+                                <li><Link to={Constants.LINK_URL.CREATE_CV} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">CV cá nhân</span></Link></li>
+                                <li><Link to={Constants.LINK_URL.CONFIRM} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Xác nhận ứng tuyển</span></Link></li>
                                 <li> <Link to={Constants.LINK_URL.CHANGE_PASSWORD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Đổi mật khẩu</span></Link></li>
+                                <li> <Link to={Constants.LINK_URL.LOGIN} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link></li>
                             </>
                         }
 

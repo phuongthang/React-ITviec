@@ -4,7 +4,8 @@ import Constants from "../../../../constants/constants";
 import { convertDate, convertExperience, convertType, getInfoUserLogin, queryString } from "../../../../helpers/helpers";
 import ListApply from "../../management/management_apply/list_apply";
 import Apply from "./apply_information";
-
+import open from "../../../../assets/image/open.png";
+import close from "../../../../assets/image/close.png";
 function Information(props) {
     const userData = getInfoUserLogin();
     const parameters = {
@@ -14,6 +15,8 @@ function Information(props) {
     }
     const [data, setData] = useState({
     });
+    const [total, setTotal] = useState();
+    const [activeCount, setActiveCount] = useState();
     const [avatar, setAvatar] = useState('/local/default.png');
     const getJobDetail = (parameters) => {
         jobApi.detailJob({
@@ -24,7 +27,10 @@ function Information(props) {
             if (mounted) {
                 if (response.status === Constants.HTTP_STATUS.OK) {
                     setData(response.data.jobs);
+                    setTotal(response.data.total.count);
+                    setActiveCount(response.data.active.count);
                     setAvatar(response.data.jobs.image ? response.data.jobs.image : '/local/default.png');
+                    
                 }
             }
             return () => mounted = false;
@@ -55,7 +61,14 @@ function Information(props) {
                     </div>
                     <hr />
                     <hr />
-                    <div className="card-body">
+                    <div className="card-body parent-item">
+                        {
+                            +activeCount < +data.count && <img className="child-item" src={open} alt="...." />
+                        }
+                        
+                        {
+                            +activeCount >= +data.count && <img className="child-item" src={close} alt="...." />
+                        }
                         <h3>Chi tiết công việc</h3>
                         <div className="d-flex">
                             <p>Ngày bắt đầu : </p>
@@ -66,8 +79,12 @@ function Information(props) {
                             <p className="m-l-5"> {data.location ? data.location : ''}</p>
                         </div>
                         <div className="d-flex">
-                            <p>Số lượng : </p>
-                            <p className="m-l-5"> {data.count ? data.count : ''}</p>
+                            <p>Số lượng ứng tuyển : </p>
+                            <p className="m-l-5"> {total ? total : 0}</p>
+                        </div>
+                        <div className="d-flex">
+                            <p>Số lượng trúng tuyển : </p>
+                            <p className="m-l-5">{activeCount ? activeCount : 0}/{data.count ? data.count : 0}</p>
                         </div>
                         <div className="d-flex">
                             <p>Loại : </p>
@@ -126,7 +143,7 @@ function Information(props) {
                         </div>
                         <div className="tab-pane" id="apply" role="tabpanel">
                             <div className="card-body">
-                                <Apply/>
+                            {parameters.role === Constants.ROLE.USER && <Apply/>}
                             </div>
                         </div>
                         <div className="tab-pane" id="list" role="tabpanel">

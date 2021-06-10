@@ -19,7 +19,8 @@ const Constants = {
         CV_INFO:'/cv-info',
         JOB_INFO:'/job-info',
         SEARCH:'/search',
-        DASHBOARD:'/dashboard'
+        DASHBOARD:'/dashboard',
+        CONFIRM:'/confirm'
     },
     HTTP_STATUS:{
         OK: 200,

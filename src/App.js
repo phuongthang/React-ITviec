@@ -8,8 +8,8 @@ import JobManagement from './screens/admins/job_management/job_management';
 import OrganizationManagement from './screens/admins/organization_management/organization_management';
 import UserManagement from './screens/admins/user_management/user_management';
 import Dashboard from './screens/dashboard/dashboard';
-import MainLayout from './screens/layouts/main_layout';
 import Search from './screens/search/search';
+import Confirm from './screens/users/confirm/confirm';
 import CreateCV from './screens/users/create/create_cv/create_cv';
 import CreateJob from './screens/users/create/create_job/create_job';
 import EditJob from './screens/users/edit/edit_job/edit_job';
@@ -43,6 +43,7 @@ function App() {
         <Route exact path={Constants.LINK_URL.JOB_INFO} component={JobInformation}/>
         <Route exact path={Constants.LINK_URL.CV_INFO} component={CVInformation}/>
         <Route exact path={Constants.LINK_URL.SEARCH} component={Search}/>
+        <Route exact path={Constants.LINK_URL.CONFIRM} component={Confirm}/>
       </Switch>
     </BrowserRouter>
   );
