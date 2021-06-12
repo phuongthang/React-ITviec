@@ -12,6 +12,14 @@ const managementApi = {
       const url = `/admin/management/jobs`;
       return axiosClient.get(url);
     },
+    getCV() {
+      const url = `/admin/management/cvs`;
+      return axiosClient.get(url);
+    },
+    getOffer(params) {
+      const url = `/user/management/offer`;
+      return axiosClient.post(url,params);
+    },
     deleteOrganization(params){
       const url = `/admin/organization/delete`;
       return axiosClient.post(url,params);
@@ -26,6 +34,14 @@ const managementApi = {
     },
     activeJob(params){
       const url = `/admin/job/active`;
+      return axiosClient.post(url,params);
+    },
+    deleteCV(params){
+      const url = `/admin/cv/delete`;
+      return axiosClient.post(url,params);
+    },
+    activeCV(params){
+      const url = `/admin/cv/active`;
       return axiosClient.post(url,params);
     },
     activeStatusJob(params){

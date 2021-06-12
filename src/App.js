@@ -4,6 +4,7 @@ import Constants from './constants/constants';
 import ChangePassword from './screens/accounts/change_password';
 import ForgotPassword from './screens/accounts/forgot_password';
 import Login from './screens/accounts/login';
+import CVManagement from './screens/admins/cv_management/cv_management';
 import JobManagement from './screens/admins/job_management/job_management';
 import OrganizationManagement from './screens/admins/organization_management/organization_management';
 import UserManagement from './screens/admins/user_management/user_management';
@@ -18,6 +19,7 @@ import CVInformation from './screens/users/information/cv_information/cv_informa
 import JobInformation from './screens/users/information/job_information/job_information';
 import OrganizationInformation from './screens/users/information/organization_information/organization_information';
 import UserInformation from './screens/users/information/user_information/user_information';
+import OfferManagement from './screens/users/management/management_offer/offer_management';
 import Profile from './screens/users/profile/profile';
 
 function App() {
@@ -44,6 +46,8 @@ function App() {
         <Route exact path={Constants.LINK_URL.CV_INFO} component={CVInformation}/>
         <Route exact path={Constants.LINK_URL.SEARCH} component={Search}/>
         <Route exact path={Constants.LINK_URL.CONFIRM} component={Confirm}/>
+        <Route exact path={Constants.LINK_URL.CV_MANAGEMENT} component={CVManagement}/>
+        <Route exact path={Constants.LINK_URL.OFFER_MANAGEMENT} component={OfferManagement}/>
       </Switch>
     </BrowserRouter>
   );

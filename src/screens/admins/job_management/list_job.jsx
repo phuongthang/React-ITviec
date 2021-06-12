@@ -105,7 +105,7 @@ function ListJob(props) {
                         item.active === 0 && <Button className="btn btn-sm btn-danger btn-status" data-id={item.id} data-active={item.active} onClick={toggleModalConfirmActiveJob} disabled={item.status===0?true:false}><i className="fa fa-ban"></i> Không</Button>
                     }
                     </td>
-                    <td><i className="fa fa-paperclip m-r-5 text-info cell-click font-20" data-id={item.id} data-status={item.status} onClick={toggleModalConfirmActiveStatusJob}></i></td>
+                    <td><i className="fa fa-thumb-tack m-r-5 text-info cell-click font-20" data-id={item.id} data-status={item.status} onClick={toggleModalConfirmActiveStatusJob}></i></td>
                     <td><Link className="text-secondary" to={`${Constants.LINK_URL.JOB_INFO}?organization_id=${item.organization_id}&job_id=${item.id}`}><i className="fa fa-info m-r-5 text-info cell-click font-20"></i></Link> <i className="fa fa-minus-circle m-l-5 text-danger cell-click font-20" data-id={item.id} onClick={toggleModalConfirmDeleteJob}></i></td>
                 </tr>
             )));

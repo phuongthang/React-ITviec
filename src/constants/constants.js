@@ -20,7 +20,9 @@ const Constants = {
         JOB_INFO:'/job-info',
         SEARCH:'/search',
         DASHBOARD:'/dashboard',
-        CONFIRM:'/confirm'
+        CONFIRM:'/confirm',
+        CV_MANAGEMENT:'/cv-management',
+        OFFER_MANAGEMENT:'/offer-management',
     },
     HTTP_STATUS:{
         OK: 200,

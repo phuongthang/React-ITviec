@@ -7,7 +7,7 @@ import LanguageApi from '../../../../api/common/languageApi';
 import TypeApi from '../../../../api/common/typeApi';
 import jobApi from '../../../../api/organization/jobApi';
 import Constants from '../../../../constants/constants';
-import { queryString } from '../../../../helpers/helpers';
+import { getInfoUserLogin, queryString } from '../../../../helpers/helpers';
 import MainLayout from '../../../layouts/main_layout';
 import LoadingOverlay from '../../../loading/loading_overlay';
 import ModalFail from '../../../modal/modal_fail';
@@ -15,17 +15,20 @@ import ModalSuccess from '../../../modal/modal_success';
 
 function EditJob(props) {
 
+    const userData = getInfoUserLogin();
     const parameters = {
-        organization_id:localStorage.getItem('id'),
+        organization_id:userData.id,
         id: queryString('id'),
     }
     const [job, setJob] = useState({
+        id : '',
         title: '',
+        organization_id: '',
         start_date: '',
         end_date: '',
         position: '',
         salary: '',
-        language: '',
+        language_id: '',
         description: '',
         location: '',
         required: '',
@@ -33,8 +36,8 @@ function EditJob(props) {
         province: 0,
         district: 0,
         ward: 0,
-        experience:'',
-        type:'',
+        type_id: '',
+        experience_id: ''
     });
     const handleChange = (e) => {
         const fieldName = e.target.name;
@@ -134,7 +137,7 @@ function EditJob(props) {
                 end_date: job.end_date,
                 position: job.position,
                 salary: job.salary,
-                language: job.language,
+                language: job.language_id,
                 description: job.description,
                 location: job.location,
                 required: job.required,
@@ -142,11 +145,12 @@ function EditJob(props) {
                 province: job.province,
                 district: job.district,
                 ward: job.ward,
-                type:job.type,
-                experience:job.experience
+                type:job.type_id,
+                experience:job.experience_id
 
             }
             setLoadingOverlay(true);
+            console.log(params);
             updateJob(params);
         }
     }, [isSubmit]);
@@ -161,7 +165,7 @@ function EditJob(props) {
             console.log("Error");
         });
     }
-
+    console.log(job);
     const getExperienceApi = () => {
         ExperienceApi.getExperienceApi().then((response) => {
                 if (response.status === Constants.HTTP_STATUS.OK) {
@@ -222,7 +226,7 @@ function EditJob(props) {
                                             <div className="col-md-12">
                                                 <div className="form-group has-secondary">
                                                     <label className="control-label">Công việc :</label>
-                                                    <input type="text" className="form-control" required name="title" onChange={handleChange} defaultValue={job.title} />
+                                                    <input type="text" className="form-control" required name="title" onChange={handleChange} value={job.title} />
                                                 </div>
                                             </div>
                                         </div>
@@ -242,13 +246,13 @@ function EditJob(props) {
                                             <div className="col-md-3">
                                                 <div className="form-group has-secondary">
                                                     <label className="control-label">Vị trí :</label>
-                                                    <input className="form-control" required name="position" onChange={handleChange} defaultValue={job.position} />
+                                                    <input className="form-control" required name="position" onChange={handleChange} value={job.position} />
                                                     <small className="form-control-feedback"> ex : Backend Developer </small></div>
                                             </div>
                                             <div className="col-md-3">
                                                 <div className="form-group has-secondary">
                                                     <label className="control-label">Trình độ :</label>
-                                                    <select name="experience" id="experience" className="form-control" onChange={handleChange} defaultValue={job.experience_id}>
+                                                    <select name="experience_id" id="experience" className="form-control" onChange={handleChange} value={job.experience_id}>
                                                         {
                                                             renderExperience
                                                         }
@@ -293,7 +297,7 @@ function EditJob(props) {
                                             <div className="col-md-3">
                                                 <div className="form-group has-secondary">
                                                     <label className="control-label">Địa chỉ :</label>
-                                                    <input type="text" name="location" className="form-control" onChange={handleChange} defaultValue={job.location} />
+                                                    <input type="text" name="location" className="form-control" onChange={handleChange} value={job.location} />
                                                 </div>
                                             </div>
                                         </div>
@@ -301,7 +305,7 @@ function EditJob(props) {
                                             <div className="col-md-3">
                                                 <div className="form-group has-secondary">
                                                     <label className="control-label">Loại công việc :</label>
-                                                    <select name="type" id="type" className="form-control" onChange={handleChange} defaultValue={job.type_id}>
+                                                    <select name="type_id" id="type" className="form-control" onChange={handleChange} value={job.type_id}>
                                                         {
                                                             renderType
                                                         }
@@ -311,14 +315,14 @@ function EditJob(props) {
                                             <div className="col-md-3">
                                                 <div className="form-group has-secondary">
                                                     <label className="control-label">Lương :</label>
-                                                    <input className="form-control" required name="salary" onChange={handleChange} defaultValue={job.salary} />
+                                                    <input className="form-control" required name="salary" onChange={handleChange} value={job.salary} />
                                                     <small className="form-control-feedback"> ex : 1000 USD </small>
                                                 </div>
                                             </div>
                                             <div className="col-md-3">
                                                 <div className="form-group has-secondary">
                                                     <label className="control-label">Ngôn ngữ :</label>
-                                                    <select name="language" id="language" className="form-control" onChange={handleChange} defaultValue={job.language_id}>
+                                                    <select name="language_id" id="language" className="form-control" onChange={handleChange} value={job.language_id}>
                                                         {
                                                             renderLanguage
                                                         }
@@ -328,7 +332,7 @@ function EditJob(props) {
                                             <div className="col-md-3">
                                                 <div className="form-group has-secondary">
                                                     <label className="control-label" >Số lượng :</label>
-                                                    <input name="count" type="number" className="form-control" min={1} required onChange={handleChange} defaultValue={job.count} />
+                                                    <input name="count" type="number" className="form-control" min={1} required onChange={handleChange} value={job.count} />
                                                 </div>
                                             </div>
                                         </div>
@@ -336,7 +340,7 @@ function EditJob(props) {
                                             <div className="col-md-12">
                                                 <div className="form-group has-secondary">
                                                     <label className="control-label" >Mô tả :</label>
-                                                    <textarea className="form-control" rows={10} required name="description" onChange={handleChange} defaultValue={job.description} />
+                                                    <textarea className="form-control" rows={10} required name="description" onChange={handleChange} value={job.description} />
                                                 </div>
                                             </div>
                                         </div>
@@ -344,7 +348,7 @@ function EditJob(props) {
                                             <div className="col-md-12">
                                                 <div className="form-group has-secondary">
                                                     <label className="control-label">Yêu cầu :</label>
-                                                    <textarea className="form-control" rows={10} required name="required" onChange={handleChange} defaultValue={job.required} />
+                                                    <textarea className="form-control" rows={10} required name="required" onChange={handleChange} value={job.required} />
                                                 </div>
                                             </div>
                                         </div>

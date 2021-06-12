@@ -1,24 +1,22 @@
 import React, { useEffect } from 'react';
-import MainLayout from '../layouts/main_layout';
-import DashboardTopCV from './dashboard_top_cv';
-import DashboardTopJob from './dashboard_top_job';
-import DashboardTopOrganization from './dashboard_top_organization';
+import MainLayout from '../../../layouts/main_layout';
+import ListOffer from './list_offer';
 
-function Dashboard(props) {
+function OfferManagement(props) {
     useEffect(() => {
-        document.title = "Trang chủ";
+        document.title = "Quản Lí";
     }, []);
     return (
         <MainLayout>
             <div className="row page-titles">
                 <div className="col-md-5 align-self-center">
-                    <h3 className="text-themecolor">Trang chủ</h3>
+                    <h3 className="text-themecolor">Quản Lí</h3>
                 </div>
                 <div className="col-md-7 align-self-center">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-                        <li className="breadcrumb-item">Trang chủ</li>
-                        <li className="breadcrumb-item active">Trang chủ</li>
+                        <li className="breadcrumb-item">Cá nhân</li>
+                        <li className="breadcrumb-item active">Đề xuất</li>
                     </ol>
                 </div>
             </div>
@@ -27,11 +25,7 @@ function Dashboard(props) {
                     <div className="col-12">
                         <div className="card">
                             <div className="card-body">
-                                <DashboardTopOrganization />
-
-                                <DashboardTopJob />
-
-                                <DashboardTopCV/>
+                                <ListOffer/>
                             </div>
                         </div>
                     </div>
@@ -40,4 +34,4 @@ function Dashboard(props) {
         </MainLayout>
     );
 }
-export default Dashboard;
+export default OfferManagement;
