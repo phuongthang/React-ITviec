@@ -31,7 +31,7 @@ function DashboardTopOrganization(props) {
         }, (error) => {
             let mounted = true;
             if (mounted) {
-
+                props.history.push(Constants.LINK_URL.ERROR);
             }
             return () => mounted = false;
         });

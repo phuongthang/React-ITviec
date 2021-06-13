@@ -62,7 +62,7 @@ function Apply(props) {
             let mounted = true;
             if (mounted) {
                 if (error.response.status === Constants.HTTP_STATUS.UNAUTHORIZED) {
-                    console.log("Fail");
+                    props.history.push(Constants.LINK_URL.ERROR);
                 }
 
             }
@@ -71,8 +71,6 @@ function Apply(props) {
     }, []);
 
     const applyJob = (parameters) => {
-        console.log(parameters);
-        console.log(apply);
         const form = new FormData();
         form.append("user_id", parameters.user_id);
         form.append("organization_id", parameters.organization_id);
@@ -92,11 +90,7 @@ function Apply(props) {
         },(error)=>{
             let mounted = true;
             if (mounted) {
-                if (error.response.status === Constants.HTTP_STATUS.UNAUTHORIZED) {
-                    console.log("Fail");
                     toggleModalFail();
-                }
-
             }
             return () => mounted = false;
         });

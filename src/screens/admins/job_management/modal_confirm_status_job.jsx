@@ -17,7 +17,6 @@ function ModalConfirmActiveStatusJob(props){
     };
     const [text, setText] = useState();
     const activeStatusJob = (id,flag) => {
-        console.log(flag);
         managementApi.activeStatusJob({
             id:id,
             flag:flag

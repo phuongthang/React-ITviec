@@ -9,7 +9,6 @@ function DashboardTopCV(props) {
             let mounted = true;
             if (mounted) {
                 if (response.status === Constants.HTTP_STATUS.OK) {
-                    console.log(response.data.cvs);
                     setRenderTopCV(response.data.cvs.map(item => (
                         <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6" key={item.id}>
                             <div className="single-services text-center mb-30">
@@ -20,7 +19,7 @@ function DashboardTopCV(props) {
                                 </div>
                                 <div className="services-cap mt-2">
                                     <h5><Link to={`${Constants.LINK_URL.USER_INFO}?user_id=${item.id}`}>{item.fullname}</Link></h5>
-                                    <span><Link className="text-work" >{item.count} đề xuất - tại {item.address}</Link></span>
+                                    <span><Link className="text-work" >tại {item.address}</Link></span>
                                 </div>
                             </div>
                         </div>
@@ -32,7 +31,7 @@ function DashboardTopCV(props) {
         }, (error) => {
             let mounted = true;
             if (mounted) {
-
+                props.history.push(Constants.LINK_URL.ERROR);
             }
             return () => mounted = false;
         });
@@ -56,7 +55,7 @@ function DashboardTopCV(props) {
             <div className="row">
                 <div className="col-lg-12">
                     <div className="text-center mt-5">
-                        <Link to={Constants.LINK_URL.SEARCH} className="btn btn-outline btn-secondary">Xem tất cả</Link>
+                        <Link to={Constants.LINK_URL.SEARCH_OFFER} className="btn btn-outline btn-secondary">Xem tất cả</Link>
                     </div>
                 </div>
             </div>

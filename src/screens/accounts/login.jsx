@@ -5,11 +5,16 @@ import Constants from "../../constants/constants";
 import loginApi from "../../api/account/loginApi";
 import registerApi from "../../api/account/registerApi";
 import LoadingOverlay from "../loading/loading_overlay";
+import ModalLoginFail from "../modal/modal_login_fail";
 
 
 function Login(props) {
     const [isSignUp, setIsSignUp] = useState(false);
     const [loadingOverlay, setLoadingOverlay] = useState(false);
+    const [modalLoginFail, setModalLoginFail] = useState(false);
+    const toggleModalLoginFail = () => {
+        setModalLoginFail(!modalLoginFail);
+    };
     const disableSignUp = () =>{
         setIsSignUp(false);
     }
@@ -73,8 +78,14 @@ function Login(props) {
                     setLoadingOverlay(false);
                     if (mounted) {
                         if (response.status === Constants.HTTP_STATUS.OK) {
-                            localStorage.setItem('userData',JSON.stringify(response.data.data));
-                            props.history.push(Constants.LINK_URL.DASHBOARD);
+                            if(response.data === 401){
+                                toggleModalLoginFail();
+                                setSignIn(false);
+                            }
+                            else{
+                                localStorage.setItem('userData',JSON.stringify(response.data.data));
+                                props.history.push(Constants.LINK_URL.DASHBOARD);
+                            }
                         } 
                     }
                     return () => mounted = false;
@@ -82,10 +93,8 @@ function Login(props) {
                     let mounted = true;
                     setLoadingOverlay(false);
                     if (mounted) {
-                        if(error.response.status === Constants.HTTP_STATUS.UNAUTHORIZED){
-                            setSignIn(false);
-                        }
-    
+                        toggleModalLoginFail();
+                        setSignIn(false);
                     }
                     return () => mounted = false;
                 });
@@ -179,6 +188,9 @@ function Login(props) {
                 </div>
             </div>
             {loadingOverlay && <LoadingOverlay/>}
+            <ModalLoginFail
+            modal={modalLoginFail}
+            toggle={toggleModalLoginFail}/>
         </div>
     );
 }

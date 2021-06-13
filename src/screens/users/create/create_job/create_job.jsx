@@ -66,7 +66,7 @@ function CreateJob(props) {
                 )));
             }
         }, (error) => {
-            console.log("Fail");
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
 
@@ -79,7 +79,7 @@ function CreateJob(props) {
                     )));
                 }
             }, (error) => {
-                console.log("Fail");
+                props.history.push(Constants.LINK_URL.ERROR);
             })
         }
     }, [job.province])
@@ -93,7 +93,7 @@ function CreateJob(props) {
                     )));
                 }
             }, (error) => {
-                console.log("Fail");
+                props.history.push(Constants.LINK_URL.ERROR);
             })
         }
     }, [job.district]);
@@ -144,7 +144,7 @@ function CreateJob(props) {
                 )));
             }
         }, (error) => {
-            console.log("Error");
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
 
@@ -156,7 +156,7 @@ function CreateJob(props) {
                     )));
                 }
         }, (error) => {
-            console.log("Error");
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
 
@@ -168,7 +168,7 @@ function CreateJob(props) {
                 )));
             }
         }, (error) => {
-            console.log("Error");
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
     useEffect(() => {

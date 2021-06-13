@@ -71,7 +71,7 @@ function EditJob(props) {
                 setJob(response.data.jobs);
             }
         },(error)=>{
-            console.log(error);
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
     const getProvinceApi = () => {
@@ -82,7 +82,7 @@ function EditJob(props) {
                 )));
             }
         }, (error) => {
-            console.log("Fail");
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
 
@@ -95,7 +95,7 @@ function EditJob(props) {
                     )));
                 }
             }, (error) => {
-                console.log("Fail");
+                props.history.push(Constants.LINK_URL.ERROR);
             })
         }
     }, [job.province])
@@ -109,7 +109,7 @@ function EditJob(props) {
                     )));
                 }
             }, (error) => {
-                console.log("Fail");
+                props.history.push(Constants.LINK_URL.ERROR);
             })
         }
     }, [job.district]);
@@ -150,7 +150,6 @@ function EditJob(props) {
 
             }
             setLoadingOverlay(true);
-            console.log(params);
             updateJob(params);
         }
     }, [isSubmit]);
@@ -162,7 +161,7 @@ function EditJob(props) {
                 )));
             }
         }, (error) => {
-            console.log("Error");
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
     console.log(job);
@@ -174,7 +173,7 @@ function EditJob(props) {
                     )));
                 }
         }, (error) => {
-            console.log("Error");
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
 
@@ -186,7 +185,7 @@ function EditJob(props) {
                 )));
             }
         }, (error) => {
-            console.log("Error");
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
 

@@ -25,14 +25,13 @@ function BodyCV(props) {
                 if (response.status === Constants.HTTP_STATUS.OK) {
                     setFlag(response.data.flag);
                     setData(response.data.data);
-                    console.log(response.data);
                     setAvatar(response.data.data.image === null ? '/local/default.png' : response.data.data.image);
                 }
             }
         }, (error) => {
             let mounted = true;
             if (mounted) {
-                console.log("false");
+                props.history.push(Constants.LINK_URL.ERROR);
             }
             return () => mounted = false;
         });

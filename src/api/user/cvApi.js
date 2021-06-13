@@ -16,6 +16,10 @@ const cvApi = {
         const url = `/user/cv/show`;
         return axiosClient.post(url,params);
     },
+    queryCV(params) {
+        const url = `/user/cv/query`;
+        return axiosClient.post(url,params);
+    },
 };
   
 export default cvApi;

@@ -109,7 +109,7 @@ function ListJobDetail(props) {
                 )));
             }
         }, (error) => {
-            console.log("Fail");
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
 
@@ -121,7 +121,7 @@ function ListJobDetail(props) {
                 )));
             }
         }, (error) => {
-            console.log("Error");
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
 
@@ -133,7 +133,7 @@ function ListJobDetail(props) {
                 )));
             }
         }, (error) => {
-            console.log("Error");
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
     const getTypeApi = () => {
@@ -144,7 +144,7 @@ function ListJobDetail(props) {
                 )));
             }
         }, (error) => {
-            console.log("Error");
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
     const handelChangeQuery = (e) => {

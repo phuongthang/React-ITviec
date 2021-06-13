@@ -43,7 +43,7 @@ function SearchBody(props) {
                 )));
             }
         }, (error) => {
-            console.log("Fail");
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
 
@@ -55,7 +55,7 @@ function SearchBody(props) {
                 )));
             }
         }, (error) => {
-            console.log("Error");
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
 
@@ -67,7 +67,7 @@ function SearchBody(props) {
                     )));
                 }
         }, (error) => {
-            console.log("Error");
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
     const getTypeApi = () => {
@@ -78,7 +78,7 @@ function SearchBody(props) {
                 )));
             }
         }, (error) => {
-            console.log("Error");
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
     const [renderQueryJob, setRenderQueryJob] = useState();
@@ -125,6 +125,7 @@ function SearchBody(props) {
             setLoadingOverlay(false);
         }, (error) => {
             setLoadingOverlay(false);
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
     const handelChangeQuery = (e) =>{

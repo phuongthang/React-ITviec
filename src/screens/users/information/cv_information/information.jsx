@@ -30,7 +30,7 @@ function Information(props) {
         }, (error) => {
             let mounted = true;
             if (mounted) {
-                console.log("false");
+                props.history.push(Constants.LINK_URL.ERROR);
             }
             return () => mounted = false;
         });

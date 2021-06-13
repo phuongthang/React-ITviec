@@ -26,7 +26,7 @@ function ListOrganization(props) {
                 }
             }
         }, (error) => {
-
+            props.history.push(Constants.LINK_URL.ERROR);
         });
     }
 

@@ -14,9 +14,8 @@ export function convertDate(dateStr) {
 }
 
 export function convertDateTime(dateStr) {
-  var date = new Date(dateStr),
-    month = ("0" + (date.getMonth() + 1)).slice(-2),
-    day = ("0" + date.getDate()).slice(-2);
+  var date = new Date(dateStr);
+  var month = ("0" + (date.getMonth() + 1)).slice(-2);
   return `Tháng ${month} năm ${date.getFullYear()}`;
 }
 

@@ -37,7 +37,6 @@ function ModalConfirmCreateCV(props) {
                     form.append("image", props.data.image);
                 }
                 cvApi.createCV(form).then((response)=>{
-                    console.log(props.data);
                     let mounted = true;
                     if(mounted){
                         if(response.status === Constants.HTTP_STATUS.OK){

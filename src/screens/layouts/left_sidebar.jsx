@@ -16,7 +16,7 @@ function LeftSidebar(props) {
                         <a href="pages-login.html" data-toggle="tooltip" title="Logout"><i className="mdi mdi-power" /></a>
                         <div className="dropdown-menu animated flipInY">
                             <div className="dropdown-divider" />
-                            <a href="index.html" className="dropdown-item"><i className="ti-settings" />Tài khoản</a>
+                            <Link to={Constants.LINK_URL.PROFILE} className="dropdown-item"><i className="ti-settings" />Tài khoản</Link>
                             <div className="dropdown-divider" />
                             <Link to={Constants.LINK_URL.LOGIN} className="dropdown-item"><i className="fa fa-power-off" />Đăng xuất</Link>
                         </div>
@@ -48,7 +48,7 @@ function LeftSidebar(props) {
                                 <li> <Link to={Constants.LINK_URL.PROFILE} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Thông tin cá nhân</span></Link></li>
                                 <li><Link to={Constants.LINK_URL.CREATE_CV} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">CV cá nhân</span></Link></li>
                                 <li><Link to={Constants.LINK_URL.CONFIRM} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Xác nhận ứng tuyển</span></Link></li>
-                                <li><Link to={Constants.LINK_URL.CONFIRM} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Đề xuất tuyển dụng</span></Link></li>
+                                <li><Link to={Constants.LINK_URL.OFFER_MANAGEMENT} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Đề xuất tuyển dụng</span></Link></li>
                                 <li> <Link to={Constants.LINK_URL.CHANGE_PASSWORD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Đổi mật khẩu</span></Link></li>
                                 <li> <Link to={Constants.LINK_URL.LOGIN} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link></li>
                             </>

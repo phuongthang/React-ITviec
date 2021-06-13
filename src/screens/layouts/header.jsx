@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import Constants from "../../constants/constants";
 function Header(props) {
     const { userData } = props;
     return (
@@ -45,9 +47,9 @@ function Header(props) {
                                         </div>
                                     </li>
                                     <li role="separator" className="divider" />
-                                    <li><a href="index.html"><i className="ti-user" /> My Profile</a></li>
+                                    <li><Link to={Constants.LINK_URL.PROFILE}><i className="ti-user" />Tài khoản</Link></li>
                                     <li role="separator" className="divider" />
-                                    <li><a href="index.html"><i className="fa fa-power-off" /> Logout</a></li>
+                                    <li><Link to={Constants.LINK_URL.LOGIN}><i className="fa fa-power-off" />Đăng xuất</Link></li>
                                 </ul>
                             </div>
                         </li>

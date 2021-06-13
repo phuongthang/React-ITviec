@@ -9,7 +9,9 @@ import JobManagement from './screens/admins/job_management/job_management';
 import OrganizationManagement from './screens/admins/organization_management/organization_management';
 import UserManagement from './screens/admins/user_management/user_management';
 import Dashboard from './screens/dashboard/dashboard';
+import Errors from './screens/errors/errors';
 import Search from './screens/search/search';
+import SearchOffer from './screens/search_offer/search';
 import Confirm from './screens/users/confirm/confirm';
 import CreateCV from './screens/users/create/create_cv/create_cv';
 import CreateJob from './screens/users/create/create_job/create_job';
@@ -48,6 +50,8 @@ function App() {
         <Route exact path={Constants.LINK_URL.CONFIRM} component={Confirm}/>
         <Route exact path={Constants.LINK_URL.CV_MANAGEMENT} component={CVManagement}/>
         <Route exact path={Constants.LINK_URL.OFFER_MANAGEMENT} component={OfferManagement}/>
+        <Route exact path={Constants.LINK_URL.SEARCH_OFFER} component={SearchOffer}/>
+        <Route exact path={Constants.LINK_URL.ERROR} component={Errors}/>
       </Switch>
     </BrowserRouter>
   );

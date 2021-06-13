@@ -40,11 +40,8 @@ function ModalConfirmProfile(props) {
                     return () => mounted = false;
                 }, (error) => {
                     let mounted = true;
-                    if (mounted) {
-                        if (error.response.status === Constants.HTTP_STATUS.UNAUTHORIZED) {
-                            console.log("Fail");
-                        }
-    
+                    if (mounted) { 
+                        props.history.push(Constants.LINK_URL.ERROR);
                     }
                     setLoadingOverlay(false);
                     return () => mounted = false;
@@ -63,10 +60,7 @@ function ModalConfirmProfile(props) {
                 }, (error) => {
                     let mounted = true;
                     if (mounted) {
-                        if (error.response.status === Constants.HTTP_STATUS.UNAUTHORIZED) {
-                            console.log("Fail");
-                        }
-    
+                        props.history.push(Constants.LINK_URL.ERROR);
                     }
                     setLoadingOverlay(false);
                     return () => mounted = false;
@@ -86,10 +80,7 @@ function ModalConfirmProfile(props) {
                 }, (error) => {
                     let mounted = true;
                     if (mounted) {
-                        if (error.response.status === Constants.HTTP_STATUS.UNAUTHORIZED) {
-                            console.log("Fail");
-                        }
-    
+                        props.history.push(Constants.LINK_URL.ERROR);
                     }
                     setLoadingOverlay(false);
                     return () => mounted = false;

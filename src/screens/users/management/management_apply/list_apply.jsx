@@ -76,7 +76,6 @@ function ListApply(props) {
     const toggleModalConfirmApplyCV = (e) => {
         const applyId = e.target.dataset.id;
         const status = e.target.dataset.status;
-        console.log(status);
         if(status === '0'){
             setText("Bạn có chắc muốn xác nhận CV này");
             setFlagStatus(1);

@@ -39,7 +39,6 @@ function ProfileOrganization(props) {
             }).then((response) => {
                 let mounted = true;
                 if (mounted) {
-                    console.log(response.data);
                     if (response.status === Constants.HTTP_STATUS.OK) {
                         setOrganization(response.data.organization);
                         setAvatar(response.data.organization.image?response.data.organization.image:'/local/default.png');
@@ -49,10 +48,7 @@ function ProfileOrganization(props) {
             }, (error) => {
                 let mounted = true;
                 if (mounted) {
-                    if (error.response.status === Constants.HTTP_STATUS.UNAUTHORIZED) {
-                        console.log("Fail");
-                    }
-
+                    props.history.push(Constants.LINK_URL.ERROR);
                 }
                 return () => mounted = false;
             });
