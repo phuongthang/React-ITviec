@@ -1,16 +1,18 @@
-export function queryString(param){
-    let search = window.location.search;
-    let params = new URLSearchParams(search);
-    let queryResult = params.get(param);
-    return queryResult;
-    
+import { isEmpty } from "underscore";
+
+export function queryString(param) {
+  let search = window.location.search;
+  let params = new URLSearchParams(search);
+  let queryResult = params.get(param);
+  return queryResult;
+
 }
 
 export function convertDate(dateStr) {
-    var date = new Date(dateStr),
-      month = ("0" + (date.getMonth() + 1)).slice(-2),
-      day = ("0" + date.getDate()).slice(-2);
-    return [day,month,date.getFullYear()].join("/");
+  var date = new Date(dateStr),
+    month = ("0" + (date.getMonth() + 1)).slice(-2),
+    day = ("0" + date.getDate()).slice(-2);
+  return [day, month, date.getFullYear()].join("/");
 }
 
 export function convertDateTime(dateStr) {
@@ -19,8 +21,8 @@ export function convertDateTime(dateStr) {
   return `Tháng ${month} năm ${date.getFullYear()}`;
 }
 
-export function convertType(type){
-  switch(type){
+export function convertType(type) {
+  switch (type) {
     case 1: return 'Full time';
     case 2: return 'Part time';
     case 3: return 'Freelancer';
@@ -29,8 +31,8 @@ export function convertType(type){
   }
 }
 
-export function convertExperience(experience){
-  switch(experience){
+export function convertExperience(experience) {
+  switch (experience) {
     case 1: return 'Fresher';
     case 2: return 'Junior';
     case 3: return 'Senior';
@@ -41,7 +43,7 @@ export function convertExperience(experience){
     default: return '';
   }
 }
-export function cutUrlImage(url){
+export function cutUrlImage(url) {
   const urlSplit = url.split('/');
   return urlSplit[3];
 }
@@ -49,9 +51,13 @@ export function cutUrlImage(url){
 export function getInfoUserLogin() {
   let userData = {};
 
-  if ('userData' in localStorage) {
-      userData = JSON.parse(localStorage.getItem('userData'));
+  if ('userData' in localStorage && !isEmpty(JSON.parse(localStorage.getItem('userData')))) {
+    userData = JSON.parse(localStorage.getItem('userData'));
   }
 
   return userData;
+}
+
+export function clearLoginData() {
+  localStorage.removeItem('userData');
 }

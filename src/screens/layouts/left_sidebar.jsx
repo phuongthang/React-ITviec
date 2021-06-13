@@ -1,8 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 import Constants from "../../constants/constants";
+import { clearLoginData } from "../../helpers/helpers";
 function LeftSidebar(props) {
     const {userData} = props;
+    let history = useHistory();
+    const logout = () =>{
+        clearLoginData();
+        history.push(Constants.LINK_URL.LOGIN);
+    }
     return (
         <aside className="left-sidebar">
             <div className="scroll-sidebar">
@@ -36,7 +42,7 @@ function LeftSidebar(props) {
                                 <li><Link to={Constants.LINK_URL.JOB_MANAGEMENT} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Quản lí công việc</span></Link></li>
                                 <li><Link to={Constants.LINK_URL.CV_MANAGEMENT} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Quản lí CV</span></Link></li>
                                 <li> <Link to={Constants.LINK_URL.CHANGE_PASSWORD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Đổi mật khẩu</span></Link></li>
-                                <li> <Link to={Constants.LINK_URL.LOGIN} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link></li>
+                                <li> <Link onClick={logout} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link></li>
                             </>
                         }
 
@@ -50,7 +56,7 @@ function LeftSidebar(props) {
                                 <li><Link to={Constants.LINK_URL.CONFIRM} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Xác nhận ứng tuyển</span></Link></li>
                                 <li><Link to={Constants.LINK_URL.OFFER_MANAGEMENT} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Đề xuất tuyển dụng</span></Link></li>
                                 <li> <Link to={Constants.LINK_URL.CHANGE_PASSWORD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Đổi mật khẩu</span></Link></li>
-                                <li> <Link to={Constants.LINK_URL.LOGIN} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link></li>
+                                <li> <Link onClick={logout} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link></li>
                             </>
                         }
 
@@ -64,7 +70,7 @@ function LeftSidebar(props) {
                                 <li><Link to={Constants.LINK_URL.LIST_JOB + `?organization_id=${userData.id}` } className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Danh sách bài viết</span></Link></li>
                                 <li><Link to={Constants.LINK_URL.CREATE_JOB} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Tạo bài viết</span></Link></li>
                                 <li> <Link to={Constants.LINK_URL.CHANGE_PASSWORD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Đổi mật khẩu</span></Link></li>
-                                <li> <Link to={Constants.LINK_URL.LOGIN} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link></li>
+                                <li> <Link onClick={logout} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link></li>
                             </>
                         }
                     </ul>

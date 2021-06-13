@@ -1,8 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Constants from "../../constants/constants";
+import { clearLoginData } from "../../helpers/helpers";
 function Header(props) {
     const { userData } = props;
+    let history = useHistory();
+    const logout = () =>{
+        clearLoginData();
+        history.push(Constants.LINK_URL.LOGIN);
+    }
     return (
         <header className="topbar">
             <nav className="navbar top-navbar navbar-expand-md navbar-light">
@@ -49,7 +55,7 @@ function Header(props) {
                                     <li role="separator" className="divider" />
                                     <li><Link to={Constants.LINK_URL.PROFILE}><i className="ti-user" />Tài khoản</Link></li>
                                     <li role="separator" className="divider" />
-                                    <li><Link to={Constants.LINK_URL.LOGIN}><i className="fa fa-power-off" />Đăng xuất</Link></li>
+                                    <li><Link onClick={logout}><i className="fa fa-power-off" />Đăng xuất</Link></li>
                                 </ul>
                             </div>
                         </li>
