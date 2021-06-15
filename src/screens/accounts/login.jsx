@@ -21,6 +21,7 @@ function Login(props) {
     const disableSignIn = () =>{
         setIsSignUp(true);
     }
+    const [text, setText] = useState();
     const [signInFormValue, setSignInFormValue] = useState({
         email_signin: "",
         password_signin:"",
@@ -60,6 +61,7 @@ function Login(props) {
     }
     const SignUp = (e) =>{
         e.preventDefault();
+        setLoadingOverlay(true);
         setSignUp(true);
     }
     useEffect(() => {
@@ -79,6 +81,7 @@ function Login(props) {
                     if (mounted) {
                         if (response.status === Constants.HTTP_STATUS.OK) {
                             if(response.data === 401){
+                                setText('Thông tin tài khoản hoặc mật khẩu không chính xác !');
                                 toggleModalLoginFail();
                                 setSignIn(false);
                             }
@@ -93,6 +96,7 @@ function Login(props) {
                     let mounted = true;
                     setLoadingOverlay(false);
                     if (mounted) {
+                        setText('Thông tin tài khoản hoặc mật khẩu không chính xác !');
                         toggleModalLoginFail();
                         setSignIn(false);
                     }
@@ -110,23 +114,29 @@ function Login(props) {
                 role:signUpFormValue.role
             }).then((response) => {
                 let mounted = true;
+                setLoadingOverlay(false);
                 if (mounted) {
                     if (response.status === Constants.HTTP_STATUS.OK) {
-                        sessionStorage.setItem('userData',response.data.data);
-                        setSignUp(false);
-                        props.history.push(Constants.LINK_URL.DASHBOARD);
+                        if(response.data === 500){
+                            setText('Tài khoản đã tồn tại vui lòng thử tài khoản khác !');
+                            toggleModalLoginFail();
+                            setSignUp(false);
+                        }
+                        else{
+                            localStorage.setItem('userData',JSON.stringify(response.data.data));
+                            props.history.push(Constants.LINK_URL.DASHBOARD);
+                        }
                     } 
                 }
                 return () => mounted = false;
             }, (error) => {
                 let mounted = true;
                 if (mounted) {
-                    if(error.response.status === Constants.HTTP_STATUS.UNAUTHORIZED){
-                        console.log("Fail");
-                        setSignIn(false);
-                    }
-
+                        setText('Tài khoản đã tồn tại vui lòng thử tài khoản khác !');
+                        toggleModalLoginFail();
+                        setSignUp(false);
                 }
+                setLoadingOverlay(false);
                 return () => mounted = false;
             });
         }
@@ -190,7 +200,8 @@ function Login(props) {
             {loadingOverlay && <LoadingOverlay/>}
             <ModalLoginFail
             modal={modalLoginFail}
-            toggle={toggleModalLoginFail}/>
+            toggle={toggleModalLoginFail}
+            text={text}/>
         </div>
     );
 }

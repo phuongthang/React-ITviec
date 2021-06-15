@@ -9,7 +9,7 @@ function ModalLoginFail(props){
             isOpen={props.modal}
             className="modal-fail">
                 <div className="text-center m-l-10 m-r-10">
-                    Thông tin tài khoản hoặc mật khẩu không chính xác !
+                    {props.text}
                 </div>
 
                 <div className="text-center box-modal-action">
