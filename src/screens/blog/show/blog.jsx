@@ -1,22 +1,22 @@
 import React, { useEffect } from 'react';
-import MainLayout from '../layouts/main_layout';
-import SearchOffer from './search_offer';
+import MainLayout from '../../layouts/main_layout';
+import Show from './show';
 
-function Search(props) {
+function Blog(props) {
     useEffect(() => {
-        document.title = "Tìm kiếm";
+        document.title = "Bài viết";
     }, []);
     return (
         <MainLayout>
             <div className="row page-titles">
                 <div className="col-md-5 align-self-center">
-                    <h3 className="text-themecolor">Tìm kiếm</h3>
+                    <h3 className="text-themecolor">Xem</h3>
                 </div>
                 <div className="col-md-7 align-self-center">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-                        <li className="breadcrumb-item">CV</li>
-                        <li className="breadcrumb-item active">Tìm kiếm</li>
+                        <li className="breadcrumb-item">Blog</li>
+                        <li className="breadcrumb-item active">Xem</li>
                     </ol>
                 </div>
             </div>
@@ -25,11 +25,7 @@ function Search(props) {
                     <div className="col-12">
                         <div className="card">
                             <div className="card-body">
-                                <div className="text-center">
-                                    <h2>Tìm Kiếm Cá Nhân</h2>
-                                    <div className=" text-center line"></div>
-                                </div>
-                                <SearchOffer/>
+                                <Show/>
                             </div>
                         </div>
                     </div>
@@ -38,4 +34,4 @@ function Search(props) {
         </MainLayout>
     );
 }
-export default Search;
+export default Blog;

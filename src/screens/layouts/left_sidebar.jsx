@@ -24,7 +24,7 @@ function LeftSidebar(props) {
                             <div className="dropdown-divider" />
                             <Link to={Constants.LINK_URL.PROFILE} className="dropdown-item"><i className="ti-settings" />Tài khoản</Link>
                             <div className="dropdown-divider" />
-                            <Link to={Constants.LINK_URL.LOGIN} className="dropdown-item"><i className="fa fa-power-off" />Đăng xuất</Link>
+                            <a onClick={logout} className="dropdown-item"><i className="fa fa-power-off" />Đăng xuất</a>
                         </div>
                     </div>
                 </div>
@@ -36,13 +36,15 @@ function LeftSidebar(props) {
                             <>
                                 <li className="nav-small-cap"><h4>Quản trị viên</h4></li>
                                 <li> <Link to={Constants.LINK_URL.DASHBOARD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Trang chủ</span></Link></li>
+                                <li> <Link to={Constants.LINK_URL.BLOG_CREATE} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Tạo Blog</span></Link></li>
+                                <li> <Link to={Constants.LINK_URL.BLOG_LIST} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Danh sách</span></Link></li>
                                 <li> <Link to={Constants.LINK_URL.PROFILE} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Thông tin cá nhân</span></Link></li>
                                 <li><Link to={Constants.LINK_URL.USER_MANAGEMENT} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Tài khoản cá nhân</span></Link></li>
                                 <li><Link to={Constants.LINK_URL.ORGANIZATION_MANAGEMENT} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Tài khoản doanh nghiệp</span></Link></li>
                                 <li><Link to={Constants.LINK_URL.JOB_MANAGEMENT} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Quản lí công việc</span></Link></li>
                                 <li><Link to={Constants.LINK_URL.CV_MANAGEMENT} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Quản lí CV</span></Link></li>
                                 <li> <Link to={Constants.LINK_URL.CHANGE_PASSWORD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Đổi mật khẩu</span></Link></li>
-                                <li> <Link onClick={logout} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link></li>
+                                <li> <a onClick={logout} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></a></li>
                             </>
                         }
 
@@ -51,12 +53,13 @@ function LeftSidebar(props) {
                             <>
                                 <li className="nav-small-cap"><h4>Cá Nhân</h4></li>
                                 <li> <Link to={Constants.LINK_URL.DASHBOARD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Trang chủ</span></Link></li>
+                                <li> <Link to={Constants.LINK_URL.BLOG_LIST} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Danh sách</span></Link></li>
                                 <li> <Link to={Constants.LINK_URL.PROFILE} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Thông tin cá nhân</span></Link></li>
                                 <li><Link to={Constants.LINK_URL.CREATE_CV} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">CV cá nhân</span></Link></li>
                                 <li><Link to={Constants.LINK_URL.CONFIRM} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Xác nhận ứng tuyển</span></Link></li>
                                 <li><Link to={Constants.LINK_URL.OFFER_MANAGEMENT} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Đề xuất tuyển dụng</span></Link></li>
                                 <li> <Link to={Constants.LINK_URL.CHANGE_PASSWORD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Đổi mật khẩu</span></Link></li>
-                                <li> <Link onClick={logout} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link></li>
+                                <li> <a onClick={logout} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></a></li>
                             </>
                         }
 
@@ -65,12 +68,13 @@ function LeftSidebar(props) {
                             <>
                                 <li className="nav-small-cap"><h4>Doanh nghiệp</h4></li>
                                 <li> <Link to={Constants.LINK_URL.DASHBOARD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Trang chủ</span></Link></li>
+                                <li> <Link to={Constants.LINK_URL.BLOG_LIST} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Danh sách</span></Link></li>
                                 <li> <Link to={Constants.LINK_URL.PROFILE} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Thông tin cá nhân</span></Link></li>
                                 <li><Link to={Constants.LINK_URL.ORGANIZATION_INFO + `?organization_id=${userData.id}` } className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Thông tin chi tiết</span></Link></li>
                                 <li><Link to={Constants.LINK_URL.LIST_JOB + `?organization_id=${userData.id}` } className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Danh sách bài viết</span></Link></li>
                                 <li><Link to={Constants.LINK_URL.CREATE_JOB} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Tạo bài viết</span></Link></li>
                                 <li> <Link to={Constants.LINK_URL.CHANGE_PASSWORD} className="has-arrow waves-effect waves-dark"><i className="mdi mdi-gauge" /><span className="hide-menu">Đổi mật khẩu</span></Link></li>
-                                <li> <Link onClick={logout} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></Link></li>
+                                <li> <a onClick={logout} className="has-arrow waves-effect waves-dark"><i className="fa fa-sign-out" /><span className="hide-menu">Đăng xuất</span></a></li>
                             </>
                         }
                     </ul>

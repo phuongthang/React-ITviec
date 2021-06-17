@@ -24,6 +24,9 @@ const Constants = {
         OFFER_MANAGEMENT:'/offer-management',
         SEARCH_OFFER:'/search-offer',
         ERROR:'/errors',
+        BLOG_CREATE:'/blog-create',
+        BLOG_LIST:'/blog-list',
+        BLOG_SHOW:'/blog-show',
 
     },
     HTTP_STATUS:{

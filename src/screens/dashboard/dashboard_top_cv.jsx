@@ -19,7 +19,7 @@ function DashboardTopCV(props) {
                                 </div>
                                 <div className="services-cap mt-2">
                                     <h5><Link to={`${Constants.LINK_URL.USER_INFO}?user_id=${item.id}`}>{item.fullname}</Link></h5>
-                                    <span><Link className="text-work" >tại {item.address}</Link></span>
+                                    <span><Link to={`${Constants.LINK_URL.USER_INFO}?user_id=${item.id}`} className="text-work" >tại {item.address}</Link></span>
                                 </div>
                             </div>
                         </div>

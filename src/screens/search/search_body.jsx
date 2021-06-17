@@ -23,6 +23,7 @@ function SearchBody(props) {
         experience : '0',
         province : '0',
         salary : '0',
+        fullname:'',
     }
     const [limit, setLimit] = useState(5);
     const [pageCount, setPageCount] = useState(0);
@@ -138,6 +139,7 @@ function SearchBody(props) {
     }
     const onSearch = () =>{
         setLoadingOverlay(true);
+        console.log(parameterQuery);
         queryJob(parameterQuery);
         setPageCount(1);
         setPage(1);
@@ -152,6 +154,7 @@ function SearchBody(props) {
             experience : '0',
             province : '0',
             salary : '0',
+            fullname:'',
         }));
         setPageCount(1);
         setPage(1);
@@ -174,8 +177,8 @@ function SearchBody(props) {
                         </div>
                         <div className="form-group">
                             <div className="form-group">
-                                <label htmlFor="">Lĩnh vực</label>
-                                <input type="text" className="form-control" name="field" />
+                                <label htmlFor="">Công ty</label>
+                                <input type="text" className="form-control" name="fullname" onChange={handelChangeQuery} value={parameterQuery.fullname} />
                             </div>
                         </div>
                         <div className="form-group">

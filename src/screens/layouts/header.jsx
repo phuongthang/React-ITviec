@@ -55,7 +55,7 @@ function Header(props) {
                                     <li role="separator" className="divider" />
                                     <li><Link to={Constants.LINK_URL.PROFILE}><i className="ti-user" />Tài khoản</Link></li>
                                     <li role="separator" className="divider" />
-                                    <li><Link onClick={logout}><i className="fa fa-power-off" />Đăng xuất</Link></li>
+                                    <li><a onClick={logout}><i className="fa fa-power-off" />Đăng xuất</a></li>
                                 </ul>
                             </div>
                         </li>

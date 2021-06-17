@@ -9,6 +9,9 @@ import CVManagement from './screens/admins/cv_management/cv_management';
 import JobManagement from './screens/admins/job_management/job_management';
 import OrganizationManagement from './screens/admins/organization_management/organization_management';
 import UserManagement from './screens/admins/user_management/user_management';
+import BlogCreate from './screens/blog/create/blog';
+import BlogList from './screens/blog/list/blog';
+import BlogShow from './screens/blog/show/blog';
 import Dashboard from './screens/dashboard/dashboard';
 import Errors from './screens/errors/errors';
 import ProtectedRoute from './screens/route/protected_route';
@@ -54,6 +57,9 @@ function App(props) {
                 <ProtectedRoute exact path={Constants.LINK_URL.OFFER_MANAGEMENT} component={OfferManagement} />
                 <ProtectedRoute exact path={Constants.LINK_URL.SEARCH_OFFER} component={SearchOffer} />
                 <ProtectedRoute exact path={Constants.LINK_URL.ERROR} component={Errors} />
+                <ProtectedRoute exact path={Constants.LINK_URL.BLOG_CREATE} component={BlogCreate} />
+                <ProtectedRoute exact path={Constants.LINK_URL.BLOG_LIST} component={BlogList} />
+                <ProtectedRoute exact path={Constants.LINK_URL.BLOG_SHOW} component={BlogShow} />
             </Switch>
         </BrowserRouter>
     );

@@ -254,7 +254,8 @@ function ReviewOrganization(props) {
                 {renderReview}
             </div>
             <div className="card-body b-t">
-                <div className="m-b-10 d-flex">
+                {userData.role === Constants.ROLE.USER &&
+                (<><div className="m-b-10 d-flex">
                     <label className="custom-control custom-checkbox">
                         <input type="checkbox" className="custom-control-input" checked={status} onChange={onCheck} />
                         <span className="custom-control-label anonymity m-r-10">Công khai</span>
@@ -268,7 +269,7 @@ function ReviewOrganization(props) {
                     <div className="col-1 text-right">
                         <button onClick={submitReview} type="button" className="btn btn-info btn-circle btn-lg"><i className="fa fa-paper-plane-o"></i> </button>
                     </div>
-                </div>
+                </div></>)}
                 {loadingOverlay && <LoadingOverlay />}
             </div>
         </>
